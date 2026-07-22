@@ -115,7 +115,7 @@ export function ContactSection() {
                   </button>
                 </motion.div>
               ) : (
-                <form key="form" onSubmit={handleSubmit} className="space-y-4">
+                <form key="form" onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider block">
@@ -128,6 +128,7 @@ export function ContactSection() {
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
+                        suppressHydrationWarning
                       />
                     </div>
 
@@ -142,6 +143,7 @@ export function ContactSection() {
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
+                        suppressHydrationWarning
                       />
                     </div>
                   </div>
@@ -157,6 +159,7 @@ export function ContactSection() {
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
+                      suppressHydrationWarning
                     />
                   </div>
 
@@ -171,6 +174,7 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200 resize-none"
+                      suppressHydrationWarning
                     />
                   </div>
 
