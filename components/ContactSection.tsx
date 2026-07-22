@@ -66,10 +66,10 @@ export function ContactSection() {
               <div className="overflow-hidden">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">Email</span>
                 <a
-                  href="mailto:musthafacz13@gmail.com"
+                  href="mailto:contact@example.com"
                   className="text-sm font-semibold text-[#0071e3] hover:underline block truncate"
                 >
-                  musthafacz13@gmail.com
+                  contact@example.com
                 </a>
               </div>
             </div>
