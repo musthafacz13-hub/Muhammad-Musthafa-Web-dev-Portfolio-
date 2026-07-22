@@ -38,11 +38,11 @@ export function SocialSection() {
         className="flex flex-col items-center gap-6"
       >
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
-          08 — Connect
+          Connect
         </span>
 
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f]">
-          Follow &amp; Connect
+          Social Links
         </h2>
 
         {/* Minimalist Glass Pill containing Icons Only */}

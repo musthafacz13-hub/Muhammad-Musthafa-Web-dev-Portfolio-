@@ -5,10 +5,8 @@ import { WatercolorMesh } from '@/components/WatercolorMesh';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import { AboutSection } from '@/components/AboutSection';
-import { PhilosophySection } from '@/components/PhilosophySection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ProjectsSection } from '@/components/ProjectsSection';
-import { ExperienceSection } from '@/components/ExperienceSection';
 import { CertificatesSection } from '@/components/CertificatesSection';
 import { ContactSection } from '@/components/ContactSection';
 import { SocialSection } from '@/components/SocialSection';
@@ -23,34 +21,28 @@ export default function Home() {
       {/* Floating Glass Navigation Bar */}
       <Navbar />
 
-      {/* 1. Hero Section */}
+      {/* Hero Section */}
       <HeroSection />
 
-      {/* 2. About Section */}
+      {/* About Section */}
       <AboutSection />
 
-      {/* 3. Design Philosophy Section */}
-      <PhilosophySection />
-
-      {/* 4. Skills Section */}
+      {/* Services & Skills Section */}
       <SkillsSection />
 
-      {/* 5. Projects Section */}
+      {/* Projects Section */}
       <ProjectsSection />
 
-      {/* 6. Experience Section */}
-      <ExperienceSection />
-
-      {/* 7. Certificates Section */}
+      {/* Certifications Section */}
       <CertificatesSection />
 
-      {/* 8. Contact Section */}
+      {/* Contact Section */}
       <ContactSection />
 
-      {/* 9. Social Section */}
+      {/* Social Section */}
       <SocialSection />
 
-      {/* 10. Footer Section */}
+      {/* Footer Section */}
       <FooterSection />
     </main>
   );
