@@ -2,9 +2,79 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout, Flame, Calendar, Sliders, CheckSquare } from 'lucide-react';
 
-const PROJECTS = [
+interface Project {
+  id: string;
+  name: string;
+  category: string;
+  role: string;
+  liveUrl: string;
+  urlDisplay: string;
+  status: string;
+  summary: string;
+  description: string[];
+  highlights: { icon: React.ElementType; label: string }[];
+  keyFeatures?: string[];
+  responsibilities: string[];
+  techStack: string[];
+}
+
+const PROJECTS: Project[] = [
+  {
+    id: 'habitos',
+    name: 'HabitOS – Personal Habit Tracking Web Application',
+    category: 'Web Application • Productivity • SaaS',
+    role: 'Product Design & Frontend Development',
+    liveUrl: 'https://habit-tracker-khaki-five-20.vercel.app/',
+    urlDisplay: 'habit-tracker-khaki-five-20.vercel.app',
+    status: 'Completed',
+    summary: 'HabitOS is a premium personal habit tracking web application designed to help users build consistent daily routines through a clean, modern, and distraction-free interface.',
+    description: [
+      'HabitOS is a premium personal habit tracking web application designed to help users build consistent daily routines through a clean, modern, and distraction-free interface.',
+      'The application provides a personalized onboarding experience where users create their own profile and build a custom habit system instead of relying on predefined data. It includes habit creation, streak tracking, progress analytics, calendar visualization, achievements, responsive layouts, dark and light themes, and comprehensive personalization settings.',
+      'HabitOS is designed with a premium SaaS experience inspired by modern products like Linear, Notion, and Apple, focusing on simplicity, performance, and an intuitive user experience.',
+    ],
+    highlights: [
+      { icon: Flame, label: 'Habit Streaks & Progress Analytics' },
+      { icon: Calendar, label: 'Calendar Visualization & Stats' },
+      { icon: Sliders, label: 'Dark & Light Mode' },
+    ],
+    keyFeatures: [
+      'Personalized onboarding',
+      'User profile management',
+      'Custom habit creation',
+      'Daily habit tracking',
+      'Habit streaks',
+      'Calendar view',
+      'Statistics dashboard',
+      'Achievement system',
+      'Responsive design',
+      'Dark & Light mode',
+      'Local Storage data persistence',
+      'Premium UI/UX',
+      'Smooth animations',
+      'Accessibility support',
+      'Mobile-friendly interface',
+    ],
+    responsibilities: [
+      'Product Design',
+      'UI/UX Design',
+      'Frontend Development',
+      'Component Architecture',
+      'Responsive Design',
+      'Performance Optimization',
+    ],
+    techStack: [
+      'Next.js 15',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Lucide React',
+      'Local Storage API',
+    ],
+  },
   {
     id: 'kozhikoden-ruchi',
     name: 'Kozhikoden Ruchi',
@@ -184,6 +254,26 @@ export function ProjectsSection() {
                   </p>
                 ))}
               </div>
+
+              {/* Key Features (if present) */}
+              {project.keyFeatures && (
+                <div className="pt-6 border-t border-black/5 space-y-3">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f]">
+                    Key Features
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.keyFeatures.map((feature) => (
+                      <span
+                        key={feature}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-[#f5f5f7] border border-black/5 text-xs font-medium text-[#1d1d1f]/90"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3]" />
+                        {feature}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Responsibilities List */}
               <div className="pt-6 border-t border-black/5 space-y-3">
