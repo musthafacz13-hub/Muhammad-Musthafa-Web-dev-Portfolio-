@@ -2,11 +2,40 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, MapPin, CheckCircle2, Mail } from 'lucide-react';
+import { Send, MapPin, CheckCircle2, Mail, Loader2 } from 'lucide-react';
+
+// ==========================================
+// GOOGLE FORM CONFIGURATION SECTION
+// ==========================================
+// To connect this portfolio form to your Google Form backend:
+// 1. Open your Google Form (https://forms.gle/AXBcNiM265Bv97xV8).
+// 2. Submit a test response and inspect the network request, or inspect the HTML source code.
+// 3. Find the `<form>` action URL. It should end with "/formResponse".
+//    Example: "https://docs.google.com/forms/d/e/1FAIpQLSfD_Z6IeM8-C1vL0_Zp_H7C-z_V-9r5rLz_V_your_actual_form_id/formResponse"
+// 4. Find the name attributes for each input field by searching for "entry." in the page source.
+//    They look like "entry.1000001", "entry.1000002", etc.
+// 5. Update the values in the config below.
+const GOOGLE_FORM_CONFIG = {
+  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSf74W6v-E3gZlP8L5XnK4pC7n-D8T0rS4l_M9s8zL_your_actual_id/formResponse',
+  fields: {
+    fullName: 'entry.1000001', // Update with actual Full Name field entry ID
+    email: 'entry.1000002',    // Update with actual Email Address field entry ID
+    subject: 'entry.1000003',  // Update with actual Subject field entry ID
+    message: 'entry.1000004',  // Update with actual Message field entry ID
+  }
+};
+
+interface ToastState {
+  message: string;
+  type: 'success' | 'error';
+}
 
 export function ContactSection() {
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState<ToastState | null>(null);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [lastSubmittedTime, setLastSubmittedTime] = useState<number>(0);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,14 +43,104 @@ export function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showToastMessage = (message: string, type: 'success' | 'error') => {
+    setToast({ message, type });
+    setTimeout(() => {
+      setToast(null);
+    }, 4000);
+  };
+
+  const handleFocus = (fieldName: string) => setFocusedField(fieldName);
+  const handleBlur = () => setFocusedField(null);
+
+  const isFieldActive = (fieldName: keyof typeof formData) => {
+    return focusedField === fieldName || formData[fieldName].length > 0;
+  };
+
+  const getLabelClass = (fieldName: keyof typeof formData) => {
+    const isActive = isFieldActive(fieldName);
+    return `absolute left-4 pointer-events-none transition-all duration-300 ease-out font-sans ${
+      isActive
+        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 uppercase tracking-widest'
+        : 'top-1/2 -translate-y-1/2 text-sm text-[#86868b]'
+    }`;
+  };
+
+  const getTextAreaLabelClass = () => {
+    const isActive = isFieldActive('message');
+    return `absolute left-4 pointer-events-none transition-all duration-300 ease-out font-sans ${
+      isActive
+        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 uppercase tracking-widest'
+        : 'top-4 text-sm text-[#86868b]'
+    }`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Prevent duplicate submission block
+    if (loading) return;
+
+    // 1. Validation
+    const nameVal = formData.name.trim();
+    const emailVal = formData.email.trim();
+    const subjectVal = formData.subject.trim();
+    const messageVal = formData.message.trim();
+
+    if (!nameVal || !emailVal || !subjectVal || !messageVal) {
+      showToastMessage("Please fill in all fields.", "error");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailVal)) {
+      showToastMessage("Please enter a valid email address.", "error");
+      return;
+    }
+
+    // 2. Client-side Spam Prevention (cooldown check)
+    const now = Date.now();
+    if (now - lastSubmittedTime < 15000) {
+      showToastMessage("Please wait a moment before sending another message.", "error");
+      return;
+    }
+
     setLoading(true);
 
-    setTimeout(() => {
+    try {
+      // 3. Prepare silent Google Form background submission
+      const urlEncodedData = new URLSearchParams();
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.fullName, nameVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.email, emailVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.subject, subjectVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.message, messageVal);
+
+      // Perform POST submission to the formResponse endpoint with mode: 'no-cors'
+      // This allows silent submission from any origin without browser CORS blocks.
+      await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: urlEncodedData.toString(),
+      });
+
+      // Clear the form and show elegant success toast
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+      setLastSubmittedTime(Date.now());
+      showToastMessage("Thank you! Your message has been sent successfully.", "success");
+    } catch (error) {
+      console.error("Form submission error:", error);
+      showToastMessage("Unable to send your message. Please try again.", "error");
+    } finally {
       setLoading(false);
-      setFormSubmitted(true);
-    }, 600);
+    }
   };
 
   return (
@@ -66,138 +185,144 @@ export function ContactSection() {
               <div className="overflow-hidden">
                 <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">Email</span>
                 <a
-                  href="mailto:contact@example.com"
+                  href="mailto:musthafacz13@gmail.com"
                   className="text-sm font-semibold text-[#0071e3] hover:underline block truncate"
                 >
-                  contact@example.com
+                  musthafacz13@gmail.com
                 </a>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column: Contact Form */}
+        {/* Right Column: Interactive Apple-inspired Contact Form */}
         <div className="md:col-span-7">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5"
+            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
           >
-            <AnimatePresence mode="wait">
-              {formSubmitted ? (
-                <motion.div
-                  key="success"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  className="py-10 flex flex-col items-center text-center space-y-3"
-                >
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
-                    <CheckCircle2 className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight">
-                    Message Sent
-                  </h3>
-                  <p className="text-sm text-[#86868b] max-w-sm leading-relaxed">
-                    Thank you for reaching out. I will get back to you as soon as possible.
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setFormSubmitted(false);
-                      setFormData({ name: '', email: '', subject: '', message: '' });
-                    }}
-                    className="mt-2 px-5 py-2 rounded-full bg-[#1d1d1f] text-white text-xs font-medium hover:bg-[#2d2d2f] transition-all"
-                  >
-                    Send Another Message
-                  </button>
-                </motion.div>
-              ) : (
-                <form key="form" onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider block">
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
-                        suppressHydrationWarning
-                      />
-                    </div>
+            <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Full Name Input */}
+                <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                  <input
+                    type="text"
+                    required
+                    value={formData.name}
+                    onFocus={() => handleFocus('name')}
+                    onBlur={handleBlur}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                    suppressHydrationWarning
+                  />
+                  <label className={getLabelClass('name')}>
+                    Full Name
+                  </label>
+                </div>
 
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider block">
-                        Email Address
-                      </label>
-                      <input
-                        type="email"
-                        required
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
-                        suppressHydrationWarning
-                      />
-                    </div>
-                  </div>
+                {/* Email Address Input */}
+                <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onFocus={() => handleFocus('email')}
+                    onBlur={handleBlur}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                    suppressHydrationWarning
+                  />
+                  <label className={getLabelClass('email')}>
+                    Email Address
+                  </label>
+                </div>
+              </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider block">
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      placeholder="UI/UX Inquiry or Web Project"
-                      value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200"
-                      suppressHydrationWarning
-                    />
-                  </div>
+              {/* Subject Input */}
+              <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                <input
+                  type="text"
+                  required
+                  value={formData.subject}
+                  onFocus={() => handleFocus('subject')}
+                  onBlur={handleBlur}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                  suppressHydrationWarning
+                />
+                <label className={getLabelClass('subject')}>
+                  Subject
+                </label>
+              </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider block">
-                      Message
-                    </label>
-                    <textarea
-                      required
-                      rows={4}
-                      placeholder="Write your message here..."
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[#f5f5f7] border border-black/5 focus:border-[#0071e3] focus:bg-white focus:outline-none text-sm text-[#1d1d1f] transition-all duration-200 resize-none"
-                      suppressHydrationWarning
-                    />
-                  </div>
+              {/* Message Input */}
+              <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                <textarea
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onFocus={() => handleFocus('message')}
+                  onBlur={handleBlur}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200 resize-none min-h-[120px]"
+                  suppressHydrationWarning
+                />
+                <label className={getTextAreaLabelClass()}>
+                  Message
+                </label>
+              </div>
 
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#1d1d1f] text-white text-xs font-semibold hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 flex items-center justify-center gap-2 shadow-sm disabled:opacity-50"
-                  >
-                    {loading ? (
-                      <span className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                    ) : (
-                      <>
-                        <span>Send Message</span>
-                        <Send className="w-3.5 h-3.5 opacity-80" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              )}
-            </AnimatePresence>
+              {/* Primary Submit Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#1d1d1f] text-white text-xs font-semibold hover:bg-[#2d2d2f] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                    <span>Sending...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <Send className="w-3.5 h-3.5 opacity-80" />
+                  </>
+                )}
+              </button>
+            </form>
           </motion.div>
         </div>
       </div>
+
+      {/* Premium Apple-style Success / Error Toast Notification */}
+      <AnimatePresence>
+        {toast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 350, damping: 25 }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3.5 rounded-2xl bg-[#1d1d1f] text-white shadow-[0_20px_50px_rgba(0,0,0,0.18)] border border-white/10"
+          >
+            {toast.type === 'success' ? (
+              <div className="w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-3.5 h-3.5 text-white" />
+              </div>
+            ) : (
+              <div className="w-5 h-5 rounded-full bg-rose-500 flex items-center justify-center shrink-0">
+                <span className="text-white text-xs font-bold font-sans">!</span>
+              </div>
+            )}
+            <span className="text-xs font-medium tracking-tight whitespace-nowrap">
+              {toast.message}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
