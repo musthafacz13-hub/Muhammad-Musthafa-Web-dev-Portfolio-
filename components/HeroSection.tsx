@@ -22,23 +22,22 @@ export function HeroSection() {
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8 relative group"
         >
-          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-black/[0.08] bg-[#f5f5f7] relative flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-black/[0.08] bg-[#f5f5f7] relative flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             {!imageError ? (
               <Image
                 src="/images/profile.jpg"
-                alt="Muhammed Musthafa Profile"
+                alt="Portrait of Musthafa, Web Developer and AI Application Builder"
                 fill
-                sizes="(max-width: 640px) 96px, 112px"
-                priority
-                className="object-cover transition-all duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
+                className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
                 onError={() => setImageError(true)}
               />
             ) : (
               /* Premium Minimalist Initials Placeholder when profile.jpg is not present */
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-[#f5f5f7] to-[#e8e8ed] text-[#1d1d1f] relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0071e3]/5 to-transparent rounded-full" />
-                <span className="text-2xl sm:text-3xl font-semibold tracking-tight font-sans z-10 opacity-90">
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-[#f5f5f7] to-[#e8e8ed] text-[#1d1d1f] relative rounded-2xl">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0071e3]/5 to-transparent rounded-2xl" />
+                <span className="text-3xl sm:text-4xl font-semibold tracking-tight font-sans z-10 opacity-90">
                   MM
                 </span>
               </div>
