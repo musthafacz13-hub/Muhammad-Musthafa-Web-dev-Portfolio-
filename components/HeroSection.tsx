@@ -25,8 +25,8 @@ export function HeroSection() {
           <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-black/[0.08] bg-[#f5f5f7] relative flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             {!imageError ? (
               <Image
-                src="/images/profile.jpg"
-                alt="Portrait of Musthafa, Web Developer and AI Application Builder"
+                src="https://i.postimg.cc/sXpvgcPm/profile.jpg"
+                alt="Portrait of Musthafa, Web Developer, Freelancer and Cybersecurity Learner"
                 fill
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
                 className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-105"
