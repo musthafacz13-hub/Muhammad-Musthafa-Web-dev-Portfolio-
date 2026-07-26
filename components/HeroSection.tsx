@@ -1,13 +1,51 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
+import Image from 'next/image';
 
 export function HeroSection() {
+  const [imageError, setImageError] = useState(false);
+
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden select-none">
       {/* Main Title & Hero Content */}
       <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
+        {/* Profile Image / Avatar Section
+            Developer Note: Once you place your profile image at `/public/images/profile.jpg`,
+            it will automatically replace the clean minimalist placeholder below.
+            Supports JPG/PNG format, recommended size 800x800 px with a square aspect ratio.
+        */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-8 relative group"
+        >
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-black/[0.08] bg-[#f5f5f7] relative flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            {!imageError ? (
+              <Image
+                src="/images/profile.jpg"
+                alt="Muhammed Musthafa Profile"
+                fill
+                sizes="(max-width: 640px) 96px, 112px"
+                priority
+                className="object-cover transition-all duration-500 group-hover:scale-105"
+                referrerPolicy="no-referrer"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              /* Premium Minimalist Initials Placeholder when profile.jpg is not present */
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-[#f5f5f7] to-[#e8e8ed] text-[#1d1d1f] relative">
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#0071e3]/5 to-transparent rounded-full" />
+                <span className="text-2xl sm:text-3xl font-semibold tracking-tight font-sans z-10 opacity-90">
+                  MM
+                </span>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
         {/* Name Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
