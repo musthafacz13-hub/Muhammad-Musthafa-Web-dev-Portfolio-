@@ -16,8 +16,10 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('about');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    const frameId = requestAnimationFrame(() => setMounted(true));
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
@@ -39,7 +41,10 @@ export function Navbar() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(frameId);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -80,7 +85,7 @@ export function Navbar() {
                       : 'text-[#86868b] hover:text-[#1d1d1f]'
                   }`}
                 >
-                  {isActive && (
+                  {isActive && mounted && (
                     <motion.div
                       layoutId="activeNavTab"
                       className="absolute inset-0 bg-white rounded-full shadow-sm border border-black/5"
