@@ -2,29 +2,12 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, ArrowDown, Sparkles, ChevronDown } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[92vh] sm:min-h-screen flex flex-col justify-between items-center pt-28 sm:pt-36 pb-12 px-6 sm:px-12 overflow-hidden select-none">
-      {/* Top Location Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-8 sm:mb-12"
-      >
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/[0.03] border border-black/[0.06] backdrop-blur-md shadow-xs">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-xs font-medium text-[#1d1d1f]/80 tracking-tight flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-[#0071e3]" />
-            Based in Kozhikode, Kerala, India
-          </span>
-        </div>
-      </motion.div>
-
+    <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden select-none">
       {/* Main Title & Hero Content */}
-      <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center my-auto">
+      <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
         {/* Name Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
@@ -80,29 +63,6 @@ export function HeroSection() {
           </a>
         </motion.div>
       </div>
-
-      {/* Apple-Style Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-        className="mt-12 flex flex-col items-center gap-2"
-      >
-        <a
-          href="#about"
-          className="group flex flex-col items-center gap-2 text-[#86868b] hover:text-[#1d1d1f] transition-colors"
-          aria-label="Scroll to About Section"
-        >
-          <span className="text-[11px] font-medium uppercase tracking-widest opacity-80">Scroll</span>
-          <div className="w-5 h-9 rounded-full border-2 border-black/15 flex justify-center p-1 group-hover:border-black/30 transition-colors">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              className="w-1.5 h-1.5 rounded-full bg-[#1d1d1f]"
-            />
-          </div>
-        </a>
-      </motion.div>
     </section>
   );
 }
