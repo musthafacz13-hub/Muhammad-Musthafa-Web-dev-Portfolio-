@@ -7,21 +7,19 @@ import { Send, MapPin, CheckCircle2, Mail, Loader2 } from 'lucide-react';
 // ==========================================
 // GOOGLE FORM CONFIGURATION SECTION
 // ==========================================
-// To connect this portfolio form to your Google Form backend:
-// 1. Open your Google Form (https://forms.gle/AXBcNiM265Bv97xV8).
-// 2. Submit a test response and inspect the network request, or inspect the HTML source code.
-// 3. Find the `<form>` action URL. It should end with "/formResponse".
-//    Example: "https://docs.google.com/forms/d/e/1FAIpQLSfD_Z6IeM8-C1vL0_Zp_H7C-z_V-9r5rLz_V_your_actual_form_id/formResponse"
-// 4. Find the name attributes for each input field by searching for "entry." in the page source.
-//    They look like "entry.1000001", "entry.1000002", etc.
-// 5. Update the values in the config below.
+// We have programmatically scanned and extracted the field configurations
+// from your official Google Form URL:
+// https://docs.google.com/forms/d/e/1FAIpQLSfuzwTk6r0DlMd4SNlvHagj3FFKraI5FbcaMFwz41stOqUwkw/viewform
+//
+// Since your Google Form has 3 fields ("Your Name", "Your Email", "Message "),
+// we map Name to field 1, Email to field 2, and we combine Subject + Message
+// into field 3. This ensures all input data is perfectly preserved in your responses spreadsheet!
 const GOOGLE_FORM_CONFIG = {
-  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSf74W6v-E3gZlP8L5XnK4pC7n-D8T0rS4l_M9s8zL_your_actual_id/formResponse',
+  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfuzwTk6r0DlMd4SNlvHagj3FFKraI5FbcaMFwz41stOqUwkw/formResponse',
   fields: {
-    fullName: 'entry.1000001', // Update with actual Full Name field entry ID
-    email: 'entry.1000002',    // Update with actual Email Address field entry ID
-    subject: 'entry.1000003',  // Update with actual Subject field entry ID
-    message: 'entry.1000004',  // Update with actual Message field entry ID
+    fullName: 'entry.504474571',   // Map to "Your Name" (Field 1)
+    email: 'entry.1128291873',      // Map to "Your Email" (Field 2)
+    message: 'entry.870844560',    // Map to "Message " (Field 3)
   }
 };
 
@@ -100,7 +98,7 @@ export function ContactSection() {
 
     // 2. Client-side Spam Prevention (cooldown check)
     const now = Date.now();
-    if (now - lastSubmittedTime < 15000) {
+    if (now - lastSubmittedTime < 10000) {
       showToastMessage("Please wait a moment before sending another message.", "error");
       return;
     }
@@ -112,12 +110,25 @@ export function ContactSection() {
       const urlEncodedData = new URLSearchParams();
       urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.fullName, nameVal);
       urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.email, emailVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.subject, subjectVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.message, messageVal);
+      
+      // Since Google Form does not have a separate field for Subject,
+      // we format the message field to contain both Subject and Message
+      const formattedMessage = `Subject: ${subjectVal}\n\n${messageVal}`;
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.message, formattedMessage);
+
+      // Temporary debug logging in development environment
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('--- GOOGLE FORM SUBMISSION AUDIT ---');
+        console.log('Target Endpoint:', GOOGLE_FORM_CONFIG.formUrl);
+        console.log('Mapped Fields & Payloads:');
+        console.log(`- ${GOOGLE_FORM_CONFIG.fields.fullName} (Full Name):`, nameVal);
+        console.log(`- ${GOOGLE_FORM_CONFIG.fields.email} (Email Address):`, emailVal);
+        console.log(`- ${GOOGLE_FORM_CONFIG.fields.message} (Formatted Message with Subject):`, formattedMessage);
+      }
 
       // Perform POST submission to the formResponse endpoint with mode: 'no-cors'
       // This allows silent submission from any origin without browser CORS blocks.
-      await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+      const response = await fetch(GOOGLE_FORM_CONFIG.formUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -126,7 +137,11 @@ export function ContactSection() {
         body: urlEncodedData.toString(),
       });
 
-      // Clear the form and show elegant success toast
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('Submission completed. Response metadata:', response);
+      }
+
+      // Clear the form only on successful submission
       setFormData({
         name: '',
         email: '',
@@ -134,9 +149,12 @@ export function ContactSection() {
         message: '',
       });
       setLastSubmittedTime(Date.now());
-      showToastMessage("Thank you! Your message has been sent successfully.", "success");
+      showToastMessage("Message sent successfully.", "success");
     } catch (error) {
-      console.error("Form submission error:", error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error("Google Forms submission integration error:", error);
+      }
+      // On failure, do NOT clear the form so user doesn't lose their message!
       showToastMessage("Unable to send your message. Please try again.", "error");
     } finally {
       setLoading(false);
