@@ -1,16 +1,17 @@
-'use client';
-
 import React from 'react';
 import { WatercolorMesh } from '@/components/WatercolorMesh';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
-import { AboutSection } from '@/components/AboutSection';
-import { SkillsSection } from '@/components/SkillsSection';
-import { ProjectsSection } from '@/components/ProjectsSection';
-import { CertificatesSection } from '@/components/CertificatesSection';
-import { ContactSection } from '@/components/ContactSection';
-import { SocialSection } from '@/components/SocialSection';
-import { FooterSection } from '@/components/FooterSection';
+import dynamic from 'next/dynamic';
+
+// Below-the-fold components split dynamically to reduce initial JavaScript payload
+const AboutSection = dynamic(() => import('@/components/AboutSection').then((mod) => mod.AboutSection));
+const SkillsSection = dynamic(() => import('@/components/SkillsSection').then((mod) => mod.SkillsSection));
+const ProjectsSection = dynamic(() => import('@/components/ProjectsSection').then((mod) => mod.ProjectsSection));
+const CertificatesSection = dynamic(() => import('@/components/CertificatesSection').then((mod) => mod.CertificatesSection));
+const ContactSection = dynamic(() => import('@/components/ContactSection').then((mod) => mod.ContactSection));
+const SocialSection = dynamic(() => import('@/components/SocialSection').then((mod) => mod.SocialSection));
+const FooterSection = dynamic(() => import('@/components/FooterSection').then((mod) => mod.FooterSection));
 
 export default function Home() {
   return (

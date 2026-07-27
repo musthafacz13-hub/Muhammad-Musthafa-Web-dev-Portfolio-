@@ -28,6 +28,7 @@ export function HeroSection() {
                 src="https://i.postimg.cc/sXpvgcPm/profile.jpg"
                 alt="Portrait of Musthafa, Web Developer, Freelancer and Cybersecurity Learner"
                 fill
+                priority
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
                 className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-105"
                 referrerPolicy="no-referrer"
