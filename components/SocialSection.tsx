@@ -4,23 +4,31 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Github, Instagram, Twitter, ExternalLink } from 'lucide-react';
 
+// ==========================================
+// SOCIAL PROFILE CONFIGURATION SECTION
+// ==========================================
+// Replace these with your actual profile URLs
+const GITHUB_URL = 'https://github.com/musthafacz13'; // Replace with actual GitHub profile
+const INSTAGRAM_URL = 'https://instagram.com/musthafa.design'; // Replace with actual Instagram profile
+const X_URL = 'https://x.com/musthafa_ui'; // Replace with actual X profile
+
 const SOCIALS = [
   {
     name: 'GitHub',
     icon: Github,
-    url: 'https://github.com',
+    url: GITHUB_URL,
     handle: '@musthafa',
   },
   {
     name: 'Instagram',
     icon: Instagram,
-    url: 'https://instagram.com',
+    url: INSTAGRAM_URL,
     handle: '@musthafa.design',
   },
   {
     name: 'X',
     icon: Twitter,
-    url: 'https://x.com',
+    url: X_URL,
     handle: '@musthafa_ui',
   },
 ];

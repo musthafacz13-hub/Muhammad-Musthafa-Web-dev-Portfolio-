@@ -229,6 +229,8 @@ export function ContactSection() {
                   <input
                     type="text"
                     required
+                    name="fullName"
+                    id="contact-full-name"
                     value={formData.name}
                     onFocus={() => handleFocus('name')}
                     onBlur={handleBlur}
@@ -236,8 +238,8 @@ export function ContactSection() {
                     className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
-                  <label className={getLabelClass('name')}>
-                    Full Name
+                  <label htmlFor="contact-full-name" className={getLabelClass('name')}>
+                    Full Name <span className="text-rose-500">*</span>
                   </label>
                 </div>
 
@@ -246,6 +248,8 @@ export function ContactSection() {
                   <input
                     type="email"
                     required
+                    name="email"
+                    id="contact-email"
                     value={formData.email}
                     onFocus={() => handleFocus('email')}
                     onBlur={handleBlur}
@@ -253,8 +257,8 @@ export function ContactSection() {
                     className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
-                  <label className={getLabelClass('email')}>
-                    Email Address
+                  <label htmlFor="contact-email" className={getLabelClass('email')}>
+                    Email Address <span className="text-rose-500">*</span>
                   </label>
                 </div>
               </div>
@@ -264,6 +268,8 @@ export function ContactSection() {
                 <input
                   type="text"
                   required
+                  name="subject"
+                  id="contact-subject"
                   value={formData.subject}
                   onFocus={() => handleFocus('subject')}
                   onBlur={handleBlur}
@@ -271,8 +277,8 @@ export function ContactSection() {
                   className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
                   suppressHydrationWarning
                 />
-                <label className={getLabelClass('subject')}>
-                  Subject
+                <label htmlFor="contact-subject" className={getLabelClass('subject')}>
+                  Subject <span className="text-rose-500">*</span>
                 </label>
               </div>
 
@@ -281,6 +287,8 @@ export function ContactSection() {
                 <textarea
                   required
                   rows={4}
+                  name="message"
+                  id="contact-message"
                   value={formData.message}
                   onFocus={() => handleFocus('message')}
                   onBlur={handleBlur}
@@ -288,8 +296,8 @@ export function ContactSection() {
                   className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200 resize-none min-h-[120px]"
                   suppressHydrationWarning
                 />
-                <label className={getTextAreaLabelClass()}>
-                  Message
+                <label htmlFor="contact-message" className={getTextAreaLabelClass()}>
+                  Message <span className="text-rose-500">*</span>
                 </label>
               </div>
 
