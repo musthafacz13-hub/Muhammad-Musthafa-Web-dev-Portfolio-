@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout, Flame, Calendar, Sliders, CheckSquare } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout, Flame, Calendar, Sliders, CheckSquare, BookOpen, Keyboard } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -17,10 +17,61 @@ interface Project {
   highlights: { icon: React.ElementType; label: string }[];
   keyFeatures?: string[];
   responsibilities: string[];
+  responsibilitiesTitle?: string;
   techStack: string[];
 }
 
 const PROJECTS: Project[] = [
+  {
+    id: 'typeflow',
+    name: 'TypeFlow',
+    category: 'Educational Web Application',
+    role: 'Frontend Developer & UI Designer',
+    liveUrl: 'https://keyboard-learner-by-musthafa.vercel.app/',
+    urlDisplay: 'keyboard-learner-by-musthafa.vercel.app',
+    status: 'Live',
+    summary: 'TypeFlow is a modern typing practice web application designed for first-time computer users, school students, and beginners.',
+    description: [
+      'TypeFlow is a modern typing practice web application designed for first-time computer users, school students, and beginners. It provides a clean, distraction-free environment where users can learn keyboard fundamentals, improve typing accuracy, and gradually increase typing speed through interactive practice sessions with real-time performance feedback.',
+      'The goal is to make keyboard learning simple, enjoyable, and accessible for everyone before they move into coding, office work, or everyday computer use. It helps users develop muscle memory and keyboard familiarity with ease.'
+    ],
+    highlights: [
+      { icon: Keyboard, label: 'Educational Technology' },
+      { icon: BookOpen, label: 'Interactive Typing Lessons' },
+      { icon: Sparkles, label: 'Typing Practice & UX' },
+    ],
+    keyFeatures: [
+      'Beginner-friendly interface',
+      'Interactive typing lessons',
+      'Real-time WPM tracking',
+      'Accuracy monitoring',
+      'Physical keyboard support',
+      'Responsive design',
+      'Clean distraction-free UI',
+      'Instant performance feedback',
+      'Progressive learning experience',
+      'Fast loading performance',
+      'Educational Technology',
+      'Frontend Development',
+      'Performance Optimization',
+      'Accessibility',
+    ],
+    responsibilitiesTitle: 'Problem Solved',
+    responsibilities: [
+      'Learn keyboard layouts',
+      'Build muscle memory',
+      'Improve typing speed',
+      'Increase typing accuracy',
+      'Develop confidence using physical keyboards'
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Vercel'
+    ],
+  },
   {
     id: 'nexus-ai',
     name: 'Nexus AI',
@@ -328,7 +379,7 @@ export function ProjectsSection() {
               {/* Responsibilities List */}
               <div className="pt-6 border-t border-black/5 space-y-3">
                 <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f]">
-                  Key Responsibilities
+                  {project.responsibilitiesTitle || 'Key Responsibilities'}
                 </h4>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-[#1d1d1f]/80">
                   {project.responsibilities.map((resp) => (
