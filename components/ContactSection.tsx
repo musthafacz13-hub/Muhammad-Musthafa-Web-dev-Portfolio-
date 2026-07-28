@@ -245,10 +245,12 @@ export function ContactSection() {
                 <input
                   type="text"
                   name="website"
+                  id="contact-website"
                   tabIndex={-1}
                   autoComplete="off"
                   value={hpWebsite}
                   onChange={(e) => setHpWebsite(e.target.value)}
+                  suppressHydrationWarning
                 />
               </div>
 
