@@ -33,6 +33,7 @@ export function ContactSection() {
   const [toast, setToast] = useState<ToastState | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [lastSubmittedTime, setLastSubmittedTime] = useState<number>(0);
+  const [hpWebsite, setHpWebsite] = useState('');
   
   const [formData, setFormData] = useState({
     name: '',
@@ -87,6 +88,22 @@ export function ContactSection() {
 
     if (!nameVal || !emailVal || !subjectVal || !messageVal) {
       showToastMessage("Please fill in all fields.", "error");
+      return;
+    }
+
+    // Honeypot spam protection check
+    if (hpWebsite) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Spam submission detected via honeypot.');
+      }
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+      });
+      setHpWebsite('');
+      showToastMessage("Message sent successfully.", "success");
       return;
     }
 
@@ -223,6 +240,18 @@ export function ContactSection() {
             className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
           >
             <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
+              {/* Honeypot field (hidden from screen readers & users to trap bots) */}
+              <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden" aria-hidden="true">
+                <input
+                  type="text"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpWebsite}
+                  onChange={(e) => setHpWebsite(e.target.value)}
+                />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Full Name Input */}
                 <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">

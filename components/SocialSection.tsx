@@ -8,9 +8,9 @@ import { Github, Instagram, Twitter, ExternalLink } from 'lucide-react';
 // SOCIAL PROFILE CONFIGURATION SECTION
 // ==========================================
 // Replace these with your actual profile URLs
-const GITHUB_URL = 'https://github.com/musthafacz13'; // Replace with actual GitHub profile
-const INSTAGRAM_URL = 'https://instagram.com/musthafa.design'; // Replace with actual Instagram profile
-const X_URL = 'https://x.com/musthafa_ui'; // Replace with actual X profile
+const GITHUB_URL = 'https://github.com/musthafacz13-hub';
+const INSTAGRAM_URL = 'https://instagram.com/musthafa.cd';
+const X_URL = 'https://x.com/Musthafacd';
 
 const SOCIALS = [
   {
