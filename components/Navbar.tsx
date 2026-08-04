@@ -8,7 +8,6 @@ const NAV_ITEMS = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Certifications', href: '#certificates' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -61,7 +60,8 @@ export function Navbar() {
           {/* Logo / Monogram */}
           <a
             href="#"
-            className="flex items-center gap-2 group text-[#1d1d1f] font-semibold text-sm tracking-tight pl-2"
+            className="flex items-center gap-2 group text-[#1d1d1f] font-semibold text-sm tracking-tight pl-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+            aria-label="Muhammed Musthafa - Home"
           >
             <span className="w-7 h-7 rounded-full bg-[#1d1d1f] text-white flex items-center justify-center font-bold text-xs tracking-tighter group-hover:scale-105 transition-transform duration-300">
               MM
@@ -79,11 +79,12 @@ export function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-300 ${
+                  className={`relative px-3.5 py-1.5 text-xs font-medium rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] ${
                     isActive
                       ? 'text-[#1d1d1f]'
                       : 'text-[#86868b] hover:text-[#1d1d1f]'
                   }`}
+                  aria-current={isActive ? 'page' : undefined}
                 >
                   {isActive && mounted && (
                     <motion.div
@@ -102,7 +103,7 @@ export function Navbar() {
           <div className="flex items-center gap-2 pr-1">
             <a
               href="#contact"
-              className="hidden sm:inline-flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-full bg-[#1d1d1f] text-white hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 shadow-sm"
+              className="hidden sm:inline-flex items-center gap-1 px-4 py-1.5 text-xs font-medium rounded-full bg-[#1d1d1f] text-white hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
             >
               Get in Touch
               <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
@@ -111,8 +112,10 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-full text-[#1d1d1f] hover:bg-black/5 transition-colors"
-              aria-label="Toggle Navigation Menu"
+              className="md:hidden p-2 rounded-full text-[#1d1d1f] hover:bg-black/5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+              aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-nav-drawer"
             >
               {mobileMenuOpen ? (
                 <X className="w-5 h-5" />
@@ -128,6 +131,9 @@ export function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-nav-drawer"
+            role="navigation"
+            aria-label="Mobile Navigation Drawer"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

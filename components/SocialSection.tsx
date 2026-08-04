@@ -66,7 +66,9 @@ export function SocialSection() {
                 rel="noopener noreferrer"
                 onMouseEnter={() => setHovered(social.name)}
                 onMouseLeave={() => setHovered(null)}
-                className="relative group p-3 rounded-full hover:bg-black/5 text-[#1d1d1f] hover:text-[#0071e3] transition-all duration-300"
+                onFocus={() => setHovered(social.name)}
+                onBlur={() => setHovered(null)}
+                className="relative group p-3 rounded-full hover:bg-black/5 text-[#1d1d1f] hover:text-[#0071e3] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
                 aria-label={social.name}
               >
                 <Icon className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />

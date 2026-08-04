@@ -8,14 +8,10 @@ export function HeroSection() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden select-none">
+    <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden">
       {/* Main Title & Hero Content */}
       <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
-        {/* Profile Image / Avatar Section
-            Developer Note: Once you place your profile image at `/public/images/profile.jpg`,
-            it will automatically replace the clean minimalist placeholder below.
-            Supports JPG/PNG format, recommended size 800x800 px with a square aspect ratio.
-        */}
+        {/* Profile Image / Avatar Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -64,7 +60,7 @@ export function HeroSection() {
           className="mt-4 sm:mt-6 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-[#86868b] flex flex-wrap items-center justify-center gap-2 sm:gap-3"
         >
           <span className="text-[#1d1d1f]">UI/UX Designer</span>
-          <span className="text-amber-500/80 font-serif italic text-lg sm:text-3xl md:text-4xl">&amp;</span>
+          <span className="text-[#86868b] font-normal">&amp;</span>
           <span className="text-[#1d1d1f]">Web Developer</span>
         </motion.div>
 
@@ -87,7 +83,7 @@ export function HeroSection() {
         >
           <a
             href="#contact"
-            className="px-7 py-3.5 rounded-full bg-[#1d1d1f] text-white text-sm font-medium hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 shadow-md flex items-center gap-2 group"
+            className="px-7 py-3.5 rounded-full bg-[#1d1d1f] text-white text-sm font-medium hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 shadow-md flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
           >
             <span>Get in Touch</span>
             <span className="text-xs group-hover:translate-x-0.5 transition-transform">→</span>
@@ -95,7 +91,7 @@ export function HeroSection() {
 
           <a
             href="#about"
-            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] border border-black/5 text-[#1d1d1f] text-sm font-medium hover:bg-[#e8e8ed] active:scale-95 transition-all duration-200 flex items-center gap-2"
+            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] border border-black/5 text-[#1d1d1f] text-sm font-medium hover:bg-[#e8e8ed] active:scale-95 transition-all duration-200 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
           >
             <span>About Me</span>
           </a>

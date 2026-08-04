@@ -14,7 +14,7 @@ interface Project {
   status: string;
   summary: string;
   description: string[];
-  highlights: { icon: React.ElementType; label: string }[];
+  highlights: { icon: React.ComponentType<{ className?: string }>; label: string }[];
   keyFeatures?: string[];
   responsibilities: string[];
   responsibilitiesTitle?: string;
@@ -340,7 +340,7 @@ export function ProjectsSection() {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#1d1d1f] text-sm font-semibold hover:bg-[#f5f5f7] active:scale-95 transition-all shadow-md group"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white text-[#1d1d1f] text-sm font-semibold hover:bg-[#f5f5f7] active:scale-95 transition-all shadow-md group focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#1d1d1f]"
                   >
                     <span>View Live Website</span>
                     <ExternalLink className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

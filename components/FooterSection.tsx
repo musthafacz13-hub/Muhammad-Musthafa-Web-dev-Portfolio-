@@ -23,7 +23,8 @@ export function FooterSection() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="px-4 py-1.5 rounded-full glass-card hover:bg-white text-[#1d1d1f] text-xs font-medium flex items-center gap-1.5 active:scale-95 transition-all shadow-xs"
+          className="px-4 py-1.5 rounded-full glass-card hover:bg-white text-[#1d1d1f] text-xs font-medium flex items-center gap-1.5 active:scale-95 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+          aria-label="Scroll back to top of page"
         >
           <span>Back to Top</span>
           <ArrowUp className="w-3 h-3 opacity-70" />

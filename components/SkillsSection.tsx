@@ -65,33 +65,50 @@ export function SkillsSection() {
       </div>
 
       {/* Technologies Section Header */}
-      <div id="tech" className="flex flex-col items-start gap-1.5 mb-6 pt-6 border-t border-black/5">
+      <div id="tech" className="flex flex-col items-start gap-1.5 mb-8 pt-8 border-t border-black/5">
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
-          Tools
+          Tech Stack
         </span>
         <h3 className="text-2xl font-bold tracking-tight text-[#1d1d1f]">
-          Technologies
+          Tools &amp; Technologies
         </h3>
       </div>
 
-      {/* Coming Soon Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 15 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="glass-card p-8 rounded-3xl border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
-      >
-        <div>
-          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0071e3]/10 text-[#0071e3] text-xs font-semibold uppercase tracking-wider mb-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#0071e3] animate-pulse" />
-            Coming Soon
-          </span>
-          <p className="text-sm text-[#86868b] mt-1">
-            Technology stack details and interactive skill showcase are currently being updated.
-          </p>
-        </div>
-      </motion.div>
+      {/* Tech Stack Matrix Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {[
+          { name: 'React & Next.js 15', category: 'Frontend Frameworks', desc: 'App Router, SSR, Server Components, Code Splitting' },
+          { name: 'TypeScript', category: 'Language', desc: 'Strict Typing, Interfaces, Generics, Type Safety' },
+          { name: 'Tailwind CSS', category: 'Styling', desc: 'Utility-first layout, custom design tokens, responsive design' },
+          { name: 'Figma', category: 'Design & Prototyping', desc: 'Design systems, auto layout, component libraries, wireframes' },
+          { name: 'Framer Motion', category: 'Motion Design', desc: 'Spring physics, layout transitions, micro-interactions' },
+          { name: 'Vercel & Git', category: 'Deployment & CI/CD', desc: 'Version control, preview deployments, performance monitoring' },
+        ].map((tech, idx) => (
+          <motion.div
+            key={tech.name}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: idx * 0.05 }}
+            className="glass-card p-5 rounded-2xl border border-black/5 hover:border-black/15 hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+          >
+            <div>
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-2.5 py-0.5 rounded-full">
+                  {tech.category}
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              </div>
+              <h4 className="text-base font-bold text-[#1d1d1f] tracking-tight group-hover:text-[#0071e3] transition-colors">
+                {tech.name}
+              </h4>
+              <p className="text-xs text-[#86868b] leading-relaxed mt-1.5">
+                {tech.desc}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
