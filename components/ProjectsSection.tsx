@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout, Flame, Calendar, Sliders, CheckSquare, BookOpen, Keyboard } from 'lucide-react';
+import { ExternalLink, CheckCircle2, Utensils, Globe, Layers, Smartphone, Sparkles, Layout, Flame, Calendar, Sliders, CheckSquare, BookOpen, Keyboard, ShieldCheck, KeyRound } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -22,6 +22,58 @@ interface Project {
 }
 
 const PROJECTS: Project[] = [
+  {
+    id: 'passforge',
+    name: 'PassForge',
+    category: 'Password Generator Web Application',
+    role: 'Product Designer & Frontend Developer',
+    liveUrl: 'https://passfourge.vercel.app/',
+    urlDisplay: 'passfourge.vercel.app',
+    status: 'Live',
+    summary: 'PassForge is a modern password generator designed to help users create strong, unique, and secure passwords instantly with a clean, privacy-focused experience.',
+    description: [
+      'PassForge is a modern password generator designed to help users create strong, unique, and secure passwords instantly. It provides a fast, intuitive, and privacy-focused experience with a clean, minimal interface inspired by OpenAI, Apple, Linear, and Notion. Passwords are generated locally in the browser, ensuring user data remains private and is never stored or transmitted.',
+      'Many people continue to use weak, predictable, or reused passwords, increasing the risk of unauthorized account access. Existing password generators often feel outdated, cluttered, or overly technical. PassForge solves this by offering a simple, elegant, and accessible tool that enables users to generate highly secure passwords within seconds while maintaining a premium user experience.'
+    ],
+    highlights: [
+      { icon: ShieldCheck, label: 'Privacy-First Local Generation' },
+      { icon: KeyRound, label: 'Strength & Crack Time Calculation' },
+      { icon: Sliders, label: 'Customizable Length & Character Sets' },
+    ],
+    keyFeatures: [
+      'Generate strong random passwords instantly',
+      'Adjustable password length',
+      'Include or exclude uppercase letters',
+      'Include or exclude lowercase letters',
+      'Include or exclude numbers',
+      'Include or exclude special characters',
+      'Password strength indicator',
+      'Estimated crack time calculation',
+      'One-click copy to clipboard',
+      'Show/Hide password',
+      'Fully responsive design',
+      'Light and Dark mode support',
+      'Smooth micro-interactions and animations',
+      'Privacy-first local password generation',
+    ],
+    responsibilitiesTitle: 'Problem Solved',
+    responsibilities: [
+      'Eliminate risks associated with weak, predictable, or reused passwords',
+      'Ensure 100% privacy with local client-side password generation (no network transmission)',
+      'Provide instant password strength scoring & estimated crack time calculation',
+      'Deliver an intuitive, accessible, and responsive interface inspired by Apple, Linear & Notion',
+      'Enable one-click clipboard copying and flexible character set customisation'
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Lucide React',
+      'Vercel'
+    ],
+  },
   {
     id: 'typeflow',
     name: 'TypeFlow',
