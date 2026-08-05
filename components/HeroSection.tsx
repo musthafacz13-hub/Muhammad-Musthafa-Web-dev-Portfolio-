@@ -5,40 +5,33 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 
 export function HeroSection() {
-  const [imageError, setImageError] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden">
       {/* Main Title & Hero Content */}
-      <div className="max-w-5xl mx-auto text-center flex flex-col items-center justify-center">
-        {/* Profile Image / Avatar Section */}
+      <div className="max-w-4xl text-center relative z-10 flex flex-col items-center">
+        {/* Premium Developer Studio Portrait */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.96, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8 relative group"
+          className="mb-10 relative group"
         >
-          <div className="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-2xl overflow-hidden border border-black/[0.08] bg-[#f5f5f7] relative flex items-center justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-            {!imageError ? (
-              <Image
-                src="/profile.jpg"
-                alt="Portrait of Musthafa, Web Developer, Freelancer and Cybersecurity Learner"
-                fill
-                priority
-                sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 144px"
-                className="object-cover rounded-2xl transition-all duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              /* Premium Minimalist Initials Placeholder when profile.jpg is not present */
-              <div className="w-full h-full flex items-center justify-center bg-gradient-to-tr from-[#f5f5f7] to-[#e8e8ed] text-[#1d1d1f] relative rounded-2xl">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#0071e3]/5 to-transparent rounded-2xl" />
-                <span className="text-3xl sm:text-4xl font-semibold tracking-tight font-sans z-10 opacity-90">
-                  MM
-                </span>
-              </div>
-            )}
+          <div className="relative w-36 h-44 sm:w-44 sm:h-52 md:w-48 md:h-60 rounded-2xl overflow-hidden border border-black/10 bg-[#f5f5f7] shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+            <Image
+              src="/src/assets/images/developer_portrait_1785931968869.jpg"
+              alt="Professional portrait of Musthafa, Senior Web Developer & Cybersecurity Engineer"
+              fill
+              priority
+              sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 192px"
+              className={`object-cover transition-all duration-700 ${
+                imageLoaded ? 'scale-100 blur-0' : 'scale-105 blur-sm'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl pointer-events-none" />
           </div>
         </motion.div>
 
@@ -46,57 +39,72 @@ export function HeroSection() {
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight text-[#1d1d1f] leading-[1.08] sm:leading-[1.05]"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight font-sans text-[#1d1d1f]"
         >
-          Muhammed Musthafa
+          Musthafa
         </motion.h1>
 
-        {/* Roles Subheading */}
-        <motion.div
+        {/* Subtitle / Role */}
+        <motion.p
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 sm:mt-6 text-xl sm:text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-[#86868b] flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-4 text-xl sm:text-2xl md:text-3xl text-[#515154] font-medium tracking-tight max-w-2xl"
         >
-          <span className="text-[#1d1d1f]">UI/UX Designer</span>
-          <span className="text-[#86868b] font-normal">&amp;</span>
-          <span className="text-[#1d1d1f]">Web Developer</span>
-        </motion.div>
+          Web Developer, Freelancer &amp; Cybersecurity Learner
+        </motion.p>
 
-        {/* Minimal Introduction */}
+        {/* Short Mission / Description */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg md:text-xl text-[#86868b] font-normal leading-relaxed tracking-normal"
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-6 text-base sm:text-lg text-[#86868b] max-w-xl font-normal leading-relaxed"
         >
-          Designing and building clean, responsive web applications and user interfaces.
+          Crafting high-performance web applications, secure digital systems, and minimalist user experiences with modern engineering.
         </motion.p>
 
         {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-8 sm:mt-12 flex flex-wrap items-center justify-center gap-4"
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-10 flex flex-wrap gap-4 justify-center items-center"
         >
           <a
-            href="#contact"
-            className="px-7 py-3.5 rounded-full bg-[#1d1d1f] text-white text-sm font-medium hover:bg-[#2d2d2f] active:scale-95 transition-all duration-200 shadow-md flex items-center gap-2 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
+            href="#projects"
+            className="px-7 py-3.5 rounded-full bg-[#0071e3] text-white font-medium text-sm sm:text-base hover:bg-[#0077ed] transition-all duration-200 shadow-sm hover:shadow-md active:scale-95"
           >
-            <span>Get in Touch</span>
-            <span className="text-xs group-hover:translate-x-0.5 transition-transform">→</span>
+            Explore Projects
           </a>
-
           <a
-            href="#about"
-            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] border border-black/5 text-[#1d1d1f] text-sm font-medium hover:bg-[#e8e8ed] active:scale-95 transition-all duration-200 flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
+            href="#contact"
+            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] text-[#1d1d1f] border border-black/5 font-medium text-sm sm:text-base hover:bg-[#e8e8ed] transition-all duration-200 active:scale-95"
           >
-            <span>About Me</span>
+            Get in Touch
           </a>
         </motion.div>
       </div>
+
+      {/* Subtle Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
+      >
+        <span className="text-xs text-[#86868b] tracking-wider uppercase font-medium">
+          Scroll to discover
+        </span>
+        <div className="w-5 h-9 rounded-full border-2 border-[#86868b]/30 flex justify-center p-1">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+            className="w-1.5 h-1.5 bg-[#86868b] rounded-full"
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
