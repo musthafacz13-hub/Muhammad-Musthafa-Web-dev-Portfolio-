@@ -1,40 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
-import Image from 'next/image';
 
 export function HeroSection() {
-  const [imageLoaded, setImageLoaded] = useState(false);
-
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center py-16 px-6 sm:px-12 overflow-hidden">
       {/* Main Title & Hero Content */}
       <div className="max-w-4xl text-center relative z-10 flex flex-col items-center">
-        {/* Premium Developer Studio Portrait */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96, y: 15 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 relative group"
-        >
-          <div className="relative w-36 h-44 sm:w-44 sm:h-52 md:w-48 md:h-60 rounded-2xl overflow-hidden border border-black/10 bg-[#f5f5f7] shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
-            <Image
-              src="/src/assets/images/developer_portrait_1785931968869.jpg"
-              alt="Professional portrait of Musthafa, Senior Web Developer & Cybersecurity Engineer"
-              fill
-              priority
-              sizes="(max-width: 640px) 144px, (max-width: 768px) 176px, 192px"
-              className={`object-cover transition-all duration-700 ${
-                imageLoaded ? 'scale-100 blur-0' : 'scale-105 blur-sm'
-              }`}
-              onLoad={() => setImageLoaded(true)}
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 ring-1 ring-inset ring-black/5 rounded-2xl pointer-events-none" />
-          </div>
-        </motion.div>
-
         {/* Name Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
