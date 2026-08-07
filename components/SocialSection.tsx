@@ -37,20 +37,20 @@ export function SocialSection() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section id="social" className="py-20 px-6 sm:px-12 max-w-7xl mx-auto relative z-10 flex flex-col items-center justify-center">
+    <section id="social" className="py-20 px-6 sm:px-12 max-w-5xl mx-auto relative z-10 flex flex-col items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="flex flex-col items-center gap-6"
+        className="flex flex-col items-center gap-4 text-center"
       >
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Connect
         </span>
 
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f]">
-          Social Links
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f]">
+          Social Profiles
         </h2>
 
         {/* Minimalist Glass Pill containing Icons Only */}

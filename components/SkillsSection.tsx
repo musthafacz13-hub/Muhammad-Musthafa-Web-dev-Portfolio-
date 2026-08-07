@@ -30,7 +30,7 @@ export function SkillsSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           What I Do
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
           Services &amp; Capabilities
         </h2>
       </div>
@@ -69,7 +69,7 @@ export function SkillsSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Tech Stack
         </span>
-        <h3 className="text-2xl font-bold tracking-tight text-[#1d1d1f]">
+        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f]">
           Tools &amp; Technologies
         </h3>
       </div>
@@ -90,14 +90,13 @@ export function SkillsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="glass-card p-5 rounded-2xl border border-black/5 hover:border-black/15 hover:shadow-md transition-all duration-300 flex flex-col justify-between group"
+            className="glass-card p-5 rounded-2xl border border-black/5 hover:border-black/15 transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center justify-between gap-2 mb-2">
+              <div className="flex items-center justify-between gap-2 mb-2.5">
                 <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-2.5 py-0.5 rounded-full">
                   {tech.category}
                 </span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               </div>
               <h4 className="text-base font-bold text-[#1d1d1f] tracking-tight group-hover:text-[#0071e3] transition-colors">
                 {tech.name}
@@ -112,3 +111,4 @@ export function SkillsSection() {
     </section>
   );
 }
+

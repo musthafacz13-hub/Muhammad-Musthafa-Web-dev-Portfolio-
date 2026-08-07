@@ -185,7 +185,7 @@ export function ContactSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Get In Touch
         </span>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
           Contact Me
         </h2>
         <p className="text-base text-[#86868b] max-w-xl font-normal">
