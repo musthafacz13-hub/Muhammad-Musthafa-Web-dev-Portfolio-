@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, MapPin, CheckCircle2, Mail, Loader2 } from 'lucide-react';
+import { Send, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
 
 // ==========================================
 // GOOGLE FORM CONFIGURATION SECTION
@@ -60,8 +60,8 @@ export function ContactSection() {
     const isActive = isFieldActive(fieldName);
     return `absolute left-4 pointer-events-none transition-all duration-300 ease-out font-sans ${
       isActive
-        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 uppercase tracking-widest'
-        : 'top-1/2 -translate-y-1/2 text-sm text-[#86868b]'
+        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 dark:text-white/60 uppercase tracking-widest'
+        : 'top-1/2 -translate-y-1/2 text-sm text-[#86868b] dark:text-[#a1a1a6]'
     }`;
   };
 
@@ -69,8 +69,8 @@ export function ContactSection() {
     const isActive = isFieldActive('message');
     return `absolute left-4 pointer-events-none transition-all duration-300 ease-out font-sans ${
       isActive
-        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 uppercase tracking-widest'
-        : 'top-4 text-sm text-[#86868b]'
+        ? 'top-2.5 text-[10px] font-semibold text-[#1d1d1f]/60 dark:text-white/60 uppercase tracking-widest'
+        : 'top-4 text-sm text-[#86868b] dark:text-[#a1a1a6]'
     }`;
   };
 
@@ -185,10 +185,10 @@ export function ContactSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Get In Touch
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] dark:text-white">
           Contact Me
         </h2>
-        <p className="text-base text-[#86868b] max-w-xl font-normal">
+        <p className="text-base text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal">
           Have a question or want to collaborate on a design or development project? Send a message below.
         </p>
       </div>
@@ -201,30 +201,15 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 space-y-6"
+            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 space-y-6"
           >
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-2xl bg-[#0071e3]/10 text-[#0071e3] flex items-center justify-center shrink-0">
                 <MapPin className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">Location</span>
-                <h3 className="text-sm font-semibold text-[#1d1d1f]">Kozhikode, Kerala, India</h3>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 pt-4 border-t border-black/5">
-              <div className="w-10 h-10 rounded-2xl bg-[#1d1d1f]/10 text-[#1d1d1f] flex items-center justify-center shrink-0">
-                <Mail className="w-5 h-5" />
-              </div>
-              <div className="overflow-hidden">
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b]">Email</span>
-                <a
-                  href="mailto:musthafacz13@gmail.com"
-                  className="text-sm font-semibold text-[#0071e3] hover:underline block truncate"
-                >
-                  musthafacz13@gmail.com
-                </a>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b] dark:text-[#a1a1a6]">Location</span>
+                <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white">Kozhikode, Kerala, India</h3>
               </div>
             </div>
           </motion.div>
@@ -237,7 +222,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
+            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
           >
             <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
               {/* Honeypot field (hidden from screen readers & users to trap bots) */}
@@ -256,7 +241,7 @@ export function ContactSection() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Full Name Input */}
-                <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                <div className="relative rounded-2xl bg-[#f5f5f7] dark:bg-[#1c1c1e] border border-black/[0.04] dark:border-white/[0.08] focus-within:border-[#1d1d1f] dark:focus-within:border-white focus-within:bg-white dark:focus-within:bg-[#2c2c2e] transition-all duration-300">
                   <input
                     type="text"
                     required
@@ -266,7 +251,7 @@ export function ContactSection() {
                     onFocus={() => handleFocus('name')}
                     onBlur={handleBlur}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
                   <label htmlFor="contact-full-name" className={getLabelClass('name')}>
@@ -275,7 +260,7 @@ export function ContactSection() {
                 </div>
 
                 {/* Email Address Input */}
-                <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+                <div className="relative rounded-2xl bg-[#f5f5f7] dark:bg-[#1c1c1e] border border-black/[0.04] dark:border-white/[0.08] focus-within:border-[#1d1d1f] dark:focus-within:border-white focus-within:bg-white dark:focus-within:bg-[#2c2c2e] transition-all duration-300">
                   <input
                     type="email"
                     required
@@ -285,7 +270,7 @@ export function ContactSection() {
                     onFocus={() => handleFocus('email')}
                     onBlur={handleBlur}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                    className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
                   <label htmlFor="contact-email" className={getLabelClass('email')}>
@@ -295,7 +280,7 @@ export function ContactSection() {
               </div>
 
               {/* Subject Input */}
-              <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+              <div className="relative rounded-2xl bg-[#f5f5f7] dark:bg-[#1c1c1e] border border-black/[0.04] dark:border-white/[0.08] focus-within:border-[#1d1d1f] dark:focus-within:border-white focus-within:bg-white dark:focus-within:bg-[#2c2c2e] transition-all duration-300">
                 <input
                   type="text"
                   required
@@ -305,7 +290,7 @@ export function ContactSection() {
                   onFocus={() => handleFocus('subject')}
                   onBlur={handleBlur}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200"
+                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                   suppressHydrationWarning
                 />
                 <label htmlFor="contact-subject" className={getLabelClass('subject')}>
@@ -314,7 +299,7 @@ export function ContactSection() {
               </div>
 
               {/* Message Input */}
-              <div className="relative rounded-2xl bg-[#f5f5f7] border border-black/[0.04] focus-within:border-[#1d1d1f] focus-within:bg-white focus-within:shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-300">
+              <div className="relative rounded-2xl bg-[#f5f5f7] dark:bg-[#1c1c1e] border border-black/[0.04] dark:border-white/[0.08] focus-within:border-[#1d1d1f] dark:focus-within:border-white focus-within:bg-white dark:focus-within:bg-[#2c2c2e] transition-all duration-300">
                 <textarea
                   required
                   rows={4}
@@ -324,7 +309,7 @@ export function ContactSection() {
                   onFocus={() => handleFocus('message')}
                   onBlur={handleBlur}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] focus:outline-none focus:ring-0 transition-all duration-200 resize-none min-h-[120px]"
+                  className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200 resize-none min-h-[120px]"
                   suppressHydrationWarning
                 />
                 <label htmlFor="contact-message" className={getTextAreaLabelClass()}>
@@ -336,7 +321,7 @@ export function ContactSection() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#1d1d1f] text-white text-xs font-semibold hover:bg-[#2d2d2f] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
+                className="w-full sm:w-auto px-7 py-3 rounded-full bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] text-xs font-semibold hover:bg-[#2d2d2f] dark:hover:bg-[#e8e8ed] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 shadow-sm disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
               >
                 {loading ? (
                   <>

@@ -30,7 +30,7 @@ export function SkillsSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           What I Do
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] dark:text-white">
           Services &amp; Capabilities
         </h2>
       </div>
@@ -46,16 +46,16 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 hover:border-black/15 transition-all duration-300 flex flex-col justify-between"
+              className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#0071e3]/10 text-[#0071e3] flex items-center justify-center mb-6">
                   <Icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-[#1d1d1f] tracking-tight mb-2">
+                <h3 className="text-xl font-bold text-[#1d1d1f] dark:text-white tracking-tight mb-2">
                   {service.title}
                 </h3>
-                <p className="text-sm text-[#86868b] leading-relaxed">
+                <p className="text-sm text-[#515154] dark:text-[#d1d1d6] leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -65,11 +65,11 @@ export function SkillsSection() {
       </div>
 
       {/* Technologies Section Header */}
-      <div id="tech" className="flex flex-col items-start gap-1.5 mb-8 pt-8 border-t border-black/5">
+      <div id="tech" className="flex flex-col items-start gap-1.5 mb-8 pt-8 border-t border-black/5 dark:border-white/10">
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Tech Stack
         </span>
-        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f]">
+        <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] dark:text-white">
           Tools &amp; Technologies
         </h3>
       </div>
@@ -90,7 +90,7 @@ export function SkillsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="glass-card p-5 rounded-2xl border border-black/5 hover:border-black/15 transition-all duration-300 flex flex-col justify-between group"
+            className="glass-card p-5 rounded-2xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
           >
             <div>
               <div className="flex items-center justify-between gap-2 mb-2.5">
@@ -98,10 +98,10 @@ export function SkillsSection() {
                   {tech.category}
                 </span>
               </div>
-              <h4 className="text-base font-bold text-[#1d1d1f] tracking-tight group-hover:text-[#0071e3] transition-colors">
+              <h4 className="text-base font-bold text-[#1d1d1f] dark:text-white tracking-tight group-hover:text-[#0071e3] transition-colors">
                 {tech.name}
               </h4>
-              <p className="text-xs text-[#86868b] leading-relaxed mt-1.5">
+              <p className="text-xs text-[#515154] dark:text-[#d1d1d6] leading-relaxed mt-1.5">
                 {tech.desc}
               </p>
             </div>

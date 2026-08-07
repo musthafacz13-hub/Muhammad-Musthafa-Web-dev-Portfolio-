@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowDown, Sparkles } from 'lucide-react';
+import { FileText } from 'lucide-react';
 
 export function HeroSection() {
   return (
@@ -14,13 +14,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] border border-black/5 shadow-xs"
+          className="mb-6 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f5f5f7] dark:bg-[#1c1c1e] border border-black/5 dark:border-white/10 shadow-xs"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
           </span>
-          <span className="text-xs font-medium text-[#1d1d1f]/90 tracking-tight">
+          <span className="text-xs font-medium text-[#1d1d1f]/90 dark:text-white/90 tracking-tight">
             Available for new projects &amp; collaborations
           </span>
         </motion.div>
@@ -30,7 +30,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#1d1d1f] leading-[1.08]"
+          className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#1d1d1f] dark:text-white leading-[1.08]"
         >
           Muhammed Musthafa
         </motion.h1>
@@ -40,7 +40,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 text-xl sm:text-2xl md:text-3xl text-[#515154] font-medium tracking-tight max-w-xl"
+          className="mt-4 text-xl sm:text-2xl md:text-3xl text-[#424245] dark:text-[#e5e5ea] font-medium tracking-tight max-w-xl"
         >
           UI/UX Designer &amp; Web Developer
         </motion.p>
@@ -50,7 +50,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 text-base sm:text-lg text-[#86868b] max-w-lg font-normal leading-relaxed"
+          className="mt-6 text-base sm:text-lg text-[#515154] dark:text-[#d1d1d6] max-w-lg font-normal leading-relaxed"
         >
           Crafting high-performance web applications, responsive interfaces, and minimalist digital experiences with precision and modern engineering.
         </motion.p>
@@ -69,8 +69,18 @@ export function HeroSection() {
             Explore Projects
           </a>
           <a
+            href="https://drive.google.com/file/d/1ZCW3ssIUgUjSzqHkXIxz7MolMw2_xY5e/view?usp=drivesdk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] dark:bg-[#2c2c2e] text-[#1d1d1f] dark:text-white border border-black/5 dark:border-white/10 font-semibold text-sm sm:text-base hover:bg-[#e8e8ed] dark:hover:bg-[#3a3a3c] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2 inline-flex items-center gap-2"
+            aria-label="View Muhammed Musthafa's CV in Google Drive (opens in a new tab)"
+          >
+            <FileText className="w-4 h-4 text-[#0071e3]" />
+            <span>View CV</span>
+          </a>
+          <a
             href="#contact"
-            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] text-[#1d1d1f] border border-black/5 font-semibold text-sm sm:text-base hover:bg-[#e8e8ed] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
+            className="px-7 py-3.5 rounded-full bg-[#f5f5f7] dark:bg-[#2c2c2e] text-[#1d1d1f] dark:text-white border border-black/5 dark:border-white/10 font-semibold text-sm sm:text-base hover:bg-[#e8e8ed] dark:hover:bg-[#3a3a3c] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
           >
             Get in Touch
           </a>

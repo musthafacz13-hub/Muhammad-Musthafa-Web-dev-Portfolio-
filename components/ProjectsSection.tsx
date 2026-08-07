@@ -199,10 +199,10 @@ export function ProjectsSection() {
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">
           Featured Projects
         </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#1d1d1f] dark:text-white">
           Selected Work
         </h2>
-        <p className="text-base text-[#86868b] max-w-xl font-normal">
+        <p className="text-base text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal">
           Real web applications and design systems built with focus on user experience, performance, and modern engineering.
         </p>
       </div>
@@ -216,27 +216,27 @@ export function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: idx * 0.08 }}
-            className="glass-card p-8 sm:p-10 rounded-3xl border border-black/5 hover:border-black/15 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
+            className="glass-card p-8 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
           >
             {/* Top Bar: Badges, Title, Role & Primary CTA */}
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-black/5">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-black/5 dark:border-white/10">
               <div className="space-y-3 max-w-xl">
                 <div className="flex flex-wrap items-center gap-2.5">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-semibold uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     {project.status}
                   </span>
-                  <span className="text-xs font-medium text-[#1d1d1f]/70 px-3 py-1 rounded-full bg-black/5">
+                  <span className="text-xs font-medium text-[#1d1d1f]/70 dark:text-white/80 px-3 py-1 rounded-full bg-black/5 dark:bg-white/10">
                     {project.category}
                   </span>
                 </div>
 
-                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] group-hover:text-[#0071e3] transition-colors">
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#1d1d1f] dark:text-white group-hover:text-[#0071e3] transition-colors">
                   {project.name}
                 </h3>
 
-                <p className="text-xs font-semibold text-[#86868b] tracking-wide uppercase">
-                  Role: <span className="text-[#1d1d1f]">{project.role}</span>
+                <p className="text-xs font-semibold text-[#515154] dark:text-[#d1d1d6] tracking-wide uppercase">
+                  Role: <span className="text-[#1d1d1f] dark:text-white">{project.role}</span>
                 </p>
               </div>
 
@@ -246,7 +246,7 @@ export function ProjectsSection() {
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] text-white text-xs font-semibold hover:bg-[#2d2d2f] active:scale-[0.98] transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] text-xs font-semibold hover:bg-[#2d2d2f] dark:hover:bg-[#e8e8ed] active:scale-[0.98] transition-all duration-200 shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2"
                 >
                   <span>View Live Website</span>
                   <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -258,20 +258,20 @@ export function ProjectsSection() {
             <div className="py-6 space-y-6">
               {/* Summary & Purpose */}
               <div className="space-y-2">
-                <p className="text-base text-[#1d1d1f] font-medium leading-relaxed">
+                <p className="text-base text-[#1d1d1f] dark:text-white/90 font-medium leading-relaxed">
                   {project.summary}
                 </p>
-                <p className="text-sm text-[#86868b] leading-relaxed">
+                <p className="text-sm text-[#515154] dark:text-[#d1d1d6] leading-relaxed">
                   {project.purpose}
                 </p>
               </div>
 
               {/* Key Features Bullet Grid */}
               <div className="pt-2">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f]/70 mb-3">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-[#1d1d1f]/70 dark:text-white/70 mb-3">
                   Key Highlights
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1d1d1f]/80">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#1d1d1f]/90 dark:text-white/90">
                   {project.keyFeatures.map((feature) => (
                     <li key={feature} className="flex items-start gap-2">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#0071e3] shrink-0 mt-0.5" />
@@ -283,13 +283,13 @@ export function ProjectsSection() {
             </div>
 
             {/* Bottom Footer: Tech Stack Chips & URL Link */}
-            <div className="pt-6 border-t border-black/5 flex flex-wrap items-center justify-between gap-4">
+            <div className="pt-6 border-t border-black/5 dark:border-white/10 flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-xs font-semibold text-[#86868b] mr-2">Tech:</span>
+                <span className="text-xs font-semibold text-[#86868b] dark:text-[#a1a1a6] mr-2">Tech:</span>
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 rounded-full bg-[#f5f5f7] border border-black/5 text-[11px] font-medium text-[#1d1d1f]"
+                    className="px-2.5 py-1 rounded-full bg-[#f5f5f7] dark:bg-[#2c2c2e] border border-black/5 dark:border-white/10 text-[11px] font-medium text-[#1d1d1f] dark:text-white"
                   >
                     {tech}
                   </span>

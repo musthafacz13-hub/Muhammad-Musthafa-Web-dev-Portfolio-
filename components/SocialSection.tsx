@@ -49,12 +49,12 @@ export function SocialSection() {
           Connect
         </span>
 
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f]">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#1d1d1f] dark:text-white">
           Social Profiles
         </h2>
 
         {/* Minimalist Glass Pill containing Icons Only */}
-        <div className="glass-pill px-8 py-4 rounded-full flex items-center gap-8 sm:gap-12 shadow-xl border border-black/10">
+        <div className="glass-pill px-8 py-4 rounded-full flex items-center gap-8 sm:gap-12 shadow-xl border border-black/10 dark:border-white/15">
           {SOCIALS.map((social) => {
             const Icon = social.icon;
             const isHovered = hovered === social.name;
@@ -68,7 +68,7 @@ export function SocialSection() {
                 onMouseLeave={() => setHovered(null)}
                 onFocus={() => setHovered(social.name)}
                 onBlur={() => setHovered(null)}
-                className="relative group p-3 rounded-full hover:bg-black/5 text-[#1d1d1f] hover:text-[#0071e3] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+                className="relative group p-3 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-[#1d1d1f] dark:text-white hover:text-[#0071e3] dark:hover:text-[#2997ff] transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
                 aria-label={social.name}
               >
                 <Icon className="w-6 h-6 group-hover:scale-110 transition-transform duration-200" />
@@ -78,7 +78,7 @@ export function SocialSection() {
                   <motion.div
                     initial={{ opacity: 0, y: 8, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#1d1d1f] text-white text-[10px] font-semibold tracking-wider uppercase pointer-events-none whitespace-nowrap shadow-md"
+                    className="absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[#1d1d1f] dark:bg-white text-white dark:text-[#1d1d1f] text-[10px] font-semibold tracking-wider uppercase pointer-events-none whitespace-nowrap shadow-md"
                   >
                     {social.name}
                   </motion.div>

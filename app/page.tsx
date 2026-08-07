@@ -24,7 +24,7 @@ export default function Home() {
       </a>
       <main
         id="main-content"
-        className="relative min-h-screen bg-white text-[#1d1d1f] overflow-hidden selection:bg-[#0071e3]/10 selection:text-[#0071e3]"
+        className="relative min-h-screen bg-white dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] overflow-hidden selection:bg-[#0071e3]/10 selection:text-[#0071e3] transition-colors duration-300"
       >
         {/* Animated WWDC Watercolor Background Mesh */}
         <WatercolorMesh />

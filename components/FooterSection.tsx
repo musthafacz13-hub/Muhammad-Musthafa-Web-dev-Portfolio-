@@ -9,12 +9,12 @@ export function FooterSection() {
   };
 
   return (
-    <footer className="relative z-10 bg-[#f5f5f7] border-t border-black/5 py-10 px-6 sm:px-12 text-[#86868b] text-xs">
+    <footer className="relative z-10 bg-[#f5f5f7] dark:bg-[#111113] border-t border-black/5 dark:border-white/10 py-10 px-6 sm:px-12 text-[#86868b] dark:text-[#86868b] text-xs">
       <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span>© 2026 Muhammed Musthafa</span>
           <span>•</span>
-          <span className="flex items-center gap-1 text-[#1d1d1f]">
+          <span className="flex items-center gap-1 text-[#1d1d1f] dark:text-white">
             <MapPin className="w-3 h-3 text-[#0071e3]" />
             Kozhikode, Kerala, India
           </span>
@@ -23,7 +23,7 @@ export function FooterSection() {
         <button
           type="button"
           onClick={scrollToTop}
-          className="px-4 py-1.5 rounded-full glass-card hover:bg-white text-[#1d1d1f] text-xs font-medium flex items-center gap-1.5 active:scale-95 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+          className="px-4 py-1.5 rounded-full glass-card hover:bg-white dark:hover:bg-[#2c2c2e] text-[#1d1d1f] dark:text-white text-xs font-medium flex items-center gap-1.5 active:scale-95 transition-all shadow-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
           aria-label="Scroll back to top of page"
         >
           <span>Back to Top</span>
