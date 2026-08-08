@@ -4,6 +4,23 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 
+// ==========================================
+// GOOGLE FORM BACKEND CONFIGURATION
+// ==========================================
+// Form endpoint for background POST submission:
+// https://docs.google.com/forms/d/e/1FAIpQLScd8DWsq8W5Tu4cdGAg5Xsfjmsyi_edPXgccElu6ma_2hI4iQ/formResponse
+//
+// Mapped entry IDs extracted directly from the Google Form URL:
+const GOOGLE_FORM_CONFIG = {
+  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScd8DWsq8W5Tu4cdGAg5Xsfjmsyi_edPXgccElu6ma_2hI4iQ/formResponse',
+  entries: {
+    name: 'entry.664301030',      // Name field
+    email: 'entry.1579103591',     // Email field
+    subject: 'entry.2146861121',   // Subject field
+    message: 'entry.188150105',    // Message field
+  },
+};
+
 interface ToastState {
   message: string;
   type: 'success' | 'error';
@@ -11,6 +28,7 @@ interface ToastState {
 
 export function ContactSection() {
   const [loading, setLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [toast, setToast] = useState<ToastState | null>(null);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [lastSubmittedTime, setLastSubmittedTime] = useState<number>(0);
@@ -27,7 +45,7 @@ export function ContactSection() {
     setToast({ message, type });
     setTimeout(() => {
       setToast(null);
-    }, 4000);
+    }, 4500);
   };
 
   const handleFocus = (fieldName: string) => setFocusedField(fieldName);
@@ -55,10 +73,15 @@ export function ContactSection() {
     }`;
   };
 
+  const handleInputChange = (field: keyof typeof formData, value: string) => {
+    if (isSuccess) setIsSuccess(false);
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Prevent duplicate submission block
+    // Prevent duplicate submission while loading
     if (loading) return;
 
     // 1. Validation
@@ -74,17 +97,10 @@ export function ContactSection() {
 
     // Honeypot spam protection check
     if (hpWebsite) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.warn('Spam submission detected via honeypot.');
-      }
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
+      setFormData({ name: '', email: '', subject: '', message: '' });
       setHpWebsite('');
-      showToastMessage("Message sent successfully.", "success");
+      setIsSuccess(true);
+      showToastMessage("Message Sent ✓", "success");
       return;
     }
 
@@ -96,16 +112,31 @@ export function ContactSection() {
 
     // 2. Client-side Spam Prevention (cooldown check)
     const now = Date.now();
-    if (now - lastSubmittedTime < 10000) {
+    if (now - lastSubmittedTime < 8000) {
       showToastMessage("Please wait a moment before sending another message.", "error");
       return;
     }
 
     setLoading(true);
+    setIsSuccess(false);
 
     try {
-      // Simulate form submission success
-      await new Promise((resolve) => setTimeout(resolve, 600));
+      // 3. Prepare background Google Forms urlencoded payload
+      const urlEncodedData = new URLSearchParams();
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.name, nameVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.email, emailVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.subject, subjectVal);
+      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.message, messageVal);
+
+      // Submit silently to Google Forms endpoint
+      await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: urlEncodedData.toString(),
+      });
 
       // Clear the form on successful submission
       setFormData({
@@ -115,9 +146,11 @@ export function ContactSection() {
         message: '',
       });
       setLastSubmittedTime(Date.now());
-      showToastMessage("Message sent successfully.", "success");
+      setIsSuccess(true);
+      showToastMessage("Message Sent ✓", "success");
     } catch {
-      showToastMessage("Unable to send your message. Please try again.", "error");
+      // On failure, keep user's entered data, restore button, show clean error message
+      showToastMessage("Something went wrong. Please try again.", "error");
     } finally {
       setLoading(false);
     }
@@ -173,7 +206,7 @@ export function ContactSection() {
                     value={formData.name}
                     onFocus={() => handleFocus('name')}
                     onBlur={handleBlur}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
                     className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
@@ -192,7 +225,7 @@ export function ContactSection() {
                     value={formData.email}
                     onFocus={() => handleFocus('email')}
                     onBlur={handleBlur}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
                     className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                     suppressHydrationWarning
                   />
@@ -212,7 +245,7 @@ export function ContactSection() {
                   value={formData.subject}
                   onFocus={() => handleFocus('subject')}
                   onBlur={handleBlur}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  onChange={(e) => handleInputChange('subject', e.target.value)}
                   className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200"
                   suppressHydrationWarning
                 />
@@ -231,7 +264,7 @@ export function ContactSection() {
                   value={formData.message}
                   onFocus={() => handleFocus('message')}
                   onBlur={handleBlur}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
                   className="w-full px-4 pt-6 pb-2 bg-transparent border-none text-sm text-[#1d1d1f] dark:text-white focus:outline-none focus:ring-0 transition-all duration-200 resize-none min-h-[120px]"
                   suppressHydrationWarning
                 />
@@ -250,6 +283,11 @@ export function ContactSection() {
                   <>
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
                     <span>Sending...</span>
+                  </>
+                ) : isSuccess ? (
+                  <>
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 dark:text-emerald-400" />
+                    <span>Message Sent ✓</span>
                   </>
                 ) : (
                   <>
