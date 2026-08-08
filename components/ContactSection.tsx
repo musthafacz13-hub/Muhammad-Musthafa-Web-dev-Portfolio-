@@ -4,23 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 
-// ==========================================
-// GOOGLE FORM BACKEND CONFIGURATION
-// ==========================================
-// Form endpoint for background POST submission:
-// https://docs.google.com/forms/d/e/1FAIpQLScd8DWsq8W5Tu4cdGAg5Xsfjmsyi_edPXgccElu6ma_2hI4iQ/formResponse
-//
-// Mapped entry IDs extracted directly from the Google Form URL:
-const GOOGLE_FORM_CONFIG = {
-  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScd8DWsq8W5Tu4cdGAg5Xsfjmsyi_edPXgccElu6ma_2hI4iQ/formResponse',
-  entries: {
-    name: 'entry.664301030',      // Name field
-    email: 'entry.1579103591',     // Email field
-    subject: 'entry.2146861121',   // Subject field
-    message: 'entry.188150105',    // Message field
-  },
-};
-
 interface ToastState {
   message: string;
   type: 'success' | 'error';
@@ -121,34 +104,39 @@ export function ContactSection() {
     setIsSuccess(false);
 
     try {
-      // 3. Prepare background Google Forms urlencoded payload
-      const urlEncodedData = new URLSearchParams();
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.name, nameVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.email, emailVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.subject, subjectVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.entries.message, messageVal);
-
-      // Submit silently to Google Forms endpoint
-      await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+      // Submit via server-side Next.js API proxy to avoid browser CORS blocks
+      const response = await fetch('/api/contact', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: urlEncodedData.toString(),
+        body: JSON.stringify({
+          name: nameVal,
+          email: emailVal,
+          subject: subjectVal,
+          message: messageVal,
+        }),
       });
 
-      // Clear the form on successful submission
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-      setLastSubmittedTime(Date.now());
-      setIsSuccess(true);
-      showToastMessage("Message Sent ✓", "success");
-    } catch {
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Clear the form on successful submission
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        });
+        setLastSubmittedTime(Date.now());
+        setIsSuccess(true);
+        showToastMessage("Message Sent ✓", "success");
+      } else {
+        console.error('[Contact Form] Submission error returned by API proxy:', data);
+        showToastMessage(data.error || "Something went wrong. Please try again.", "error");
+      }
+    } catch (err) {
+      console.error('[Contact Form] Network error while sending to API proxy:', err);
       // On failure, keep user's entered data, restore button, show clean error message
       showToastMessage("Something went wrong. Please try again.", "error");
     } finally {
