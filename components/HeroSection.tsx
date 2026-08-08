@@ -3,33 +3,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { FileText } from 'lucide-react';
-import dynamic from 'next/dynamic';
-
-const WebThreads = dynamic(() => import('@/components/WebThreads'), { ssr: false });
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center pt-28 sm:pt-32 pb-12 px-5 sm:px-12 overflow-hidden">
-      {/* Interactive WebThreads WebGL Shader Canvas Background */}
-      <div className="absolute inset-0 z-0 opacity-30 dark:opacity-40 pointer-events-none transition-opacity duration-500">
-        <WebThreads
-          color1="#0071e3"
-          color2="#a855f7"
-          color3="#ffffff"
-          speed={0.2}
-          threadCount={7}
-          frequency={4.0}
-          spread={0.2}
-          position={0.5}
-          glow={0.03}
-          brightness={0.8}
-          opacity={0.8}
-          mouseInteraction={true}
-          mouseStrength={0.3}
-          className="w-full h-full"
-        />
-      </div>
-
       {/* Main Content Container */}
       <div className="max-w-3xl text-center relative z-10 flex flex-col items-center">
         {/* Status Pill Badge */}
