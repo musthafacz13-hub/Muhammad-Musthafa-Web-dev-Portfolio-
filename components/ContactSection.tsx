@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, MapPin, CheckCircle2, Loader2 } from 'lucide-react';
+import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 
 // ==========================================
 // GOOGLE FORM CONFIGURATION SECTION
@@ -193,37 +193,15 @@ export function ContactSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-        {/* Left Column: Location & Direct Contact Info */}
-        <div className="md:col-span-5 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 space-y-6"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#0071e3]/10 text-[#0071e3] flex items-center justify-center shrink-0">
-                <MapPin className="w-5 h-5" />
-              </div>
-              <div>
-                <span className="text-[11px] font-semibold uppercase tracking-wider text-[#86868b] dark:text-[#a1a1a6]">Location</span>
-                <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white">Kozhikode, Kerala, India</h3>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Interactive Apple-inspired Contact Form */}
-        <div className="md:col-span-7">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
-          >
+      {/* Interactive Apple-inspired Contact Form */}
+      <div className="w-full max-w-3xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card p-6 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
+        >
             <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>
               {/* Honeypot field (hidden from screen readers & users to trap bots) */}
               <div className="absolute opacity-0 pointer-events-none w-0 h-0 overflow-hidden" aria-hidden="true">
@@ -338,7 +316,6 @@ export function ContactSection() {
             </form>
           </motion.div>
         </div>
-      </div>
 
       {/* Premium Apple-style Success / Error Toast Notification */}
       <AnimatePresence>

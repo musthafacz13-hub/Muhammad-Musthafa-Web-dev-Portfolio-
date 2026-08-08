@@ -37,7 +37,7 @@ const PROJECTS: Project[] = [
     role: 'Product Designer & Frontend Developer',
     liveUrl: 'https://passfourge.vercel.app/',
     urlDisplay: 'passfourge.vercel.app',
-    status: 'Live',
+    status: 'LIVE',
     summary:
       'PassForge is a modern, privacy-first password generator designed to help users create strong, unique, and secure passwords instantly.',
     purpose:
@@ -66,7 +66,7 @@ const PROJECTS: Project[] = [
     role: 'Frontend Developer & UI Designer',
     liveUrl: 'https://keyboard-learner-by-musthafa.vercel.app/',
     urlDisplay: 'keyboard-learner-by-musthafa.vercel.app',
-    status: 'Live',
+    status: 'LIVE',
     summary:
       'TypeFlow is an interactive typing practice web application created for beginners, school students, and first-time computer users.',
     purpose:
@@ -88,7 +88,7 @@ const PROJECTS: Project[] = [
     role: 'Product Designer & Full-Stack Developer',
     liveUrl: 'https://nexus-ai-ruby-eight.vercel.app/',
     urlDisplay: 'nexus-ai-ruby-eight.vercel.app',
-    status: 'Completed',
+    status: 'LIVE',
     summary:
       'Nexus is a modern productivity workspace built to deliver fast, intelligent, and natural interactions through a clean Apple-inspired user experience.',
     purpose:
@@ -118,7 +118,7 @@ const PROJECTS: Project[] = [
     role: 'Product Designer & Frontend Developer',
     liveUrl: 'https://habit-tracker-khaki-five-20.vercel.app/',
     urlDisplay: 'habit-tracker-khaki-five-20.vercel.app',
-    status: 'Completed',
+    status: 'LIVE',
     summary:
       'HabitOS is a premium personal habit tracking web application designed to help users build consistent daily routines.',
     purpose:
@@ -148,7 +148,7 @@ const PROJECTS: Project[] = [
     role: 'UI/UX Designer & Frontend Developer',
     liveUrl: 'https://kozhikoden-ruchi.vercel.app/',
     urlDisplay: 'kozhikoden-ruchi.vercel.app',
-    status: 'Completed',
+    status: 'LIVE',
     summary:
       'A modern food discovery platform created to help food lovers and travelers explore the rich culinary culture of Kozhikode.',
     purpose:
@@ -169,7 +169,7 @@ const PROJECTS: Project[] = [
     role: 'UI/UX Designer & Frontend Developer',
     liveUrl: 'https://muhammad-musthafa-web-dev-portfolio.vercel.app/',
     urlDisplay: 'muhammad-musthafa-web-dev-portfolio.vercel.app',
-    status: 'Completed',
+    status: 'LIVE',
     summary:
       'An Apple-inspired digital portfolio showcasing selected design and development projects with precision, performance, and accessibility.',
     purpose:
@@ -294,8 +294,11 @@ export function ProjectsSection() {
                 <div className="space-y-3 max-w-xl">
                   <div className="flex flex-wrap items-center gap-2.5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                      {project.status}
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                      </span>
+                      LIVE
                     </span>
                     <span className="text-xs font-medium text-[#1d1d1f]/70 dark:text-white/80 px-3 py-1 rounded-full bg-black/5 dark:bg-white/10">
                       {project.category}
@@ -411,9 +414,18 @@ export function ProjectsSection() {
             >
               <div className="flex items-start justify-between gap-4 border-b border-black/10 dark:border-white/10 pb-4">
                 <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3]">
-                    {activeProjectModal.category}
-                  </span>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                      </span>
+                      LIVE
+                    </span>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3]">
+                      {activeProjectModal.category}
+                    </span>
+                  </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1d1d1f] dark:text-white mt-1">
                     {activeProjectModal.name}
                   </h3>
