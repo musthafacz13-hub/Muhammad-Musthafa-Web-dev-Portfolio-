@@ -196,10 +196,10 @@ export function ContactSection() {
       {/* Interactive Apple-inspired Contact Form */}
       <div className="w-full max-w-3xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="glass-card p-6 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgb(0,0,0,0.02)]"
         >
             <form onSubmit={handleSubmit} className="space-y-4" suppressHydrationWarning>

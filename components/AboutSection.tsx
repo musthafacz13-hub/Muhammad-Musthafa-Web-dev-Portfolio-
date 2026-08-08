@@ -19,12 +19,12 @@ export function AboutSection() {
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-        {/* Main Story Box */}
+        {/* Main Story Box - Enters from left */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, x: -30, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="md:col-span-8 glass-card p-8 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 flex flex-col justify-between"
         >
           <div className="space-y-4 text-base sm:text-lg text-[#1d1d1f]/90 dark:text-white/90 leading-relaxed font-normal">
@@ -45,12 +45,12 @@ export function AboutSection() {
           </div>
         </motion.div>
 
-        {/* Quick Focus Cards */}
+        {/* Quick Focus Cards - Enters from right */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          initial={{ opacity: 0, x: 30, y: 15 }}
+          whileInView={{ opacity: 1, x: 0, y: 0 }}
+          viewport={{ amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="md:col-span-4 flex flex-col gap-4 justify-between"
         >
           <div className="glass-card p-6 rounded-3xl border border-black/5 dark:border-white/10 flex-1 flex flex-col justify-center">

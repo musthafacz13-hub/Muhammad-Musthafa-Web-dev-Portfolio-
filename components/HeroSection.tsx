@@ -16,10 +16,6 @@ export function HeroSection() {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#f5f5f7]/90 dark:bg-[#1c1c1e]/90 border border-black/5 dark:border-white/10 shadow-xs backdrop-blur-md"
         >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-          </span>
           <span className="text-xs font-semibold text-[#1d1d1f]/90 dark:text-white/90 tracking-tight">
             Available for new projects &amp; collaborations
           </span>

@@ -39,10 +39,10 @@ export function SocialSection() {
   return (
     <section id="social" className="py-20 px-6 sm:px-12 max-w-5xl mx-auto relative z-10 flex flex-col items-center justify-center">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        initial={{ opacity: 0, y: 25, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ amount: 0.3 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col items-center gap-4 text-center"
       >
         <span className="text-xs font-semibold uppercase tracking-widest text-[#0071e3]">

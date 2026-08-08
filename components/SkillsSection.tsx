@@ -36,16 +36,18 @@ export function SkillsSection() {
       </div>
 
       {/* Services Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 overflow-hidden sm:overflow-visible">
         {SERVICES.map((service, idx) => {
           const Icon = service.icon;
+          // Left card enters from left (-30px), middle from center (0px), right card from right (+30px)
+          const xOffset = idx === 0 ? -30 : idx === 2 ? 30 : 0;
           return (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              initial={{ opacity: 0, x: xOffset, y: 20 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ amount: 0.2 }}
+              transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="glass-card p-6 sm:p-8 rounded-3xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
@@ -83,30 +85,35 @@ export function SkillsSection() {
           { name: 'Figma', category: 'Design & Prototyping', desc: 'Design systems, auto layout, component libraries, wireframes' },
           { name: 'Framer Motion', category: 'Motion Design', desc: 'Spring physics, layout transitions, micro-interactions' },
           { name: 'Vercel & Git', category: 'Deployment & CI/CD', desc: 'Version control, preview deployments, performance monitoring' },
-        ].map((tech, idx) => (
-          <motion.div
-            key={tech.name}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.05 }}
-            className="glass-card p-5 rounded-2xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-2.5">
-                <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-2.5 py-0.5 rounded-full">
-                  {tech.category}
-                </span>
+        ].map((tech, idx) => {
+          // Columns in 3-col layout: 0 (left -25px), 1 (center 0px), 2 (right +25px)
+          const colIndex = idx % 3;
+          const xOffset = colIndex === 0 ? -25 : colIndex === 2 ? 25 : 0;
+          return (
+            <motion.div
+              key={tech.name}
+              initial={{ opacity: 0, x: xOffset, y: 15 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ amount: 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              className="glass-card p-5 rounded-2xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 flex flex-col justify-between group"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-2.5">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[#0071e3] bg-[#0071e3]/10 px-2.5 py-0.5 rounded-full">
+                    {tech.category}
+                  </span>
+                </div>
+                <h4 className="text-base font-bold text-[#1d1d1f] dark:text-white tracking-tight group-hover:text-[#0071e3] transition-colors">
+                  {tech.name}
+                </h4>
+                <p className="text-xs text-[#515154] dark:text-[#d1d1d6] leading-relaxed mt-1.5">
+                  {tech.desc}
+                </p>
               </div>
-              <h4 className="text-base font-bold text-[#1d1d1f] dark:text-white tracking-tight group-hover:text-[#0071e3] transition-colors">
-                {tech.name}
-              </h4>
-              <p className="text-xs text-[#515154] dark:text-[#d1d1d6] leading-relaxed mt-1.5">
-                {tech.desc}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

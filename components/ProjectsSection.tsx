@@ -280,24 +280,23 @@ export function ProjectsSection() {
             </button>
           </div>
         ) : (
-          filteredProjects.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="glass-card p-8 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
-            >
+          filteredProjects.map((project, idx) => {
+            // Alternate left-to-middle (-35px) and right-to-middle (+35px) for projects
+            const xOffset = idx % 2 === 0 ? -35 : 35;
+            return (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, x: xOffset, y: 20 }}
+                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                viewport={{ amount: 0.15 }}
+                transition={{ duration: 0.7, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="glass-card p-8 sm:p-10 rounded-3xl border border-black/5 dark:border-white/10 hover:border-black/15 dark:hover:border-white/20 transition-all duration-300 shadow-xs hover:shadow-md flex flex-col justify-between group"
+              >
               {/* Top Bar: Badges, Title, Role & Primary CTA */}
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 pb-6 border-b border-black/5 dark:border-white/10">
                 <div className="space-y-3 max-w-xl">
                   <div className="flex flex-wrap items-center gap-2.5">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                      </span>
                       LIVE
                     </span>
                     <span className="text-xs font-medium text-[#1d1d1f]/70 dark:text-white/80 px-3 py-1 rounded-full bg-black/5 dark:bg-white/10">
@@ -389,9 +388,10 @@ export function ProjectsSection() {
                 </a>
               </div>
             </motion.div>
-          ))
-        )}
-      </div>
+          );
+        })
+      )}
+    </div>
 
       {/* Interactive Project Inspection Modal */}
       <AnimatePresence>
@@ -416,10 +416,6 @@ export function ProjectsSection() {
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">
-                      <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
-                      </span>
                       LIVE
                     </span>
                     <span className="text-[11px] font-semibold uppercase tracking-wider text-[#0071e3]">
