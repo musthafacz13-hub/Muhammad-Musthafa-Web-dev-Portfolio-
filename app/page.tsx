@@ -1,6 +1,5 @@
 import React from 'react';
 import { WatercolorMesh } from '@/components/WatercolorMesh';
-import { DitherBackground } from '@/components/DitherBackground';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import dynamic from 'next/dynamic';
@@ -28,9 +27,6 @@ export default function Home() {
       >
         {/* Animated WWDC Watercolor Background Mesh */}
         <WatercolorMesh />
-
-        {/* React Bits Interactive Dither Canvas Background */}
-        <DitherBackground />
 
       {/* Floating Glass Navigation Bar */}
       <Navbar />

@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ArrowUpRight, Sun, Moon } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sun, Moon, Search } from 'lucide-react';
+import { CommandPalette } from '@/components/CommandPalette';
 
 const NAV_ITEMS = [
   { label: 'About', href: '#about' },
@@ -15,6 +16,7 @@ export function Navbar() {
   const [activeSection, setActiveSection] = useState('about');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
@@ -120,6 +122,21 @@ export function Navbar() {
 
           {/* Right Action CTA & iOS-Style Theme Toggle & Mobile Menu Toggle */}
           <div className="flex items-center gap-2 sm:gap-2.5 pr-0.5">
+            {/* Quick Command Palette Trigger Button */}
+            <button
+              type="button"
+              onClick={() => setCommandPaletteOpen(true)}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hover:bg-black/[0.08] dark:hover:bg-white/[0.14] text-[#1d1d1f] dark:text-white transition-all text-xs font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
+              aria-label="Open search command palette"
+              title="Search commands (⌘K)"
+            >
+              <Search className="w-3.5 h-3.5 text-[#0071e3]" />
+              <span className="hidden lg:inline text-[11px] text-[#86868b] dark:text-[#a1a1a6]">Search</span>
+              <kbd className="hidden sm:inline-block px-1.5 py-0.2 text-[9px] font-mono font-semibold rounded bg-black/10 dark:bg-white/10 text-[#86868b] dark:text-[#a1a1a6]">
+                ⌘K
+              </kbd>
+            </button>
+
             {/* Refined iOS Light/Dark Mode Switch */}
             <button
               type="button"
@@ -249,6 +266,11 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <CommandPalette
+        isOpen={commandPaletteOpen}
+        onClose={() => setCommandPaletteOpen(false)}
+      />
     </>
   );
 }

@@ -10,6 +10,7 @@
     "clean": "next clean"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
     "@google/genai": "^2.4.0",
     "@hookform/resolvers": "^5.2.1",
     "@react-three/fiber": "^9.7.0",
@@ -21,10 +22,12 @@
     "lucide-react": "^0.553.0",
     "motion": "^12.23.24",
     "next": "^15.4.9",
+    "ogl": "^1.0.11",
     "postcss": "^8.5.6",
     "postprocessing": "^6.39.4",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
+    "shadcn": "^4.16.2",
     "tailwind-merge": "^3.3.1",
     "three": "^0.185.1"
   },
