@@ -29,11 +29,6 @@ export function WatercolorMesh() {
       <div 
         className="absolute -bottom-[15%] left-[25%] w-[60vw] h-[60vw] max-w-[850px] max-h-[850px] rounded-full bg-pink-200/25 dark:bg-indigo-900/15 blur-[140px] animate-mesh-3" 
       />
-
-      {/* Subtle Grid Dot Accent */}
-      <div 
-        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px]" 
-      />
     </div>
   );
 }
