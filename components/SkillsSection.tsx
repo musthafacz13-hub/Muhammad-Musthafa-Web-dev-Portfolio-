@@ -8,17 +8,17 @@ const SERVICES = [
   {
     icon: Palette,
     title: 'UI/UX Design',
-    description: 'Wireframing, visual hierarchy, mobile and web application layouts, design tokens, and interactive prototypes in Figma.',
+    description: 'Wireframing, user interface layouts, and interactive prototypes in Figma with a focus on usability and clarity.',
   },
   {
     icon: Code,
     title: 'Web Development',
-    description: 'Building clean, responsive front-end websites using HTML5, CSS3, JavaScript, TypeScript, React, Next.js, and Tailwind CSS.',
+    description: 'Building clean, fast, and responsive web applications using React, Next.js, TypeScript, and Tailwind CSS.',
   },
   {
     icon: Smartphone,
     title: 'Mobile Interface Design',
-    description: 'Designing intuitive iOS and Android application interfaces adhering to Apple Human Interface and Material Design standards.',
+    description: 'Designing intuitive mobile app screens for iOS and Android following modern design guidelines.',
   },
 ];
 
@@ -79,12 +79,12 @@ export function SkillsSection() {
       {/* Tech Stack Matrix Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {[
-          { name: 'React & Next.js 15', category: 'Frontend Frameworks', desc: 'App Router, SSR, Server Components, Code Splitting' },
-          { name: 'TypeScript', category: 'Language', desc: 'Strict Typing, Interfaces, Generics, Type Safety' },
-          { name: 'Tailwind CSS', category: 'Styling', desc: 'Utility-first layout, custom design tokens, responsive design' },
-          { name: 'Figma', category: 'Design & Prototyping', desc: 'Design systems, auto layout, component libraries, wireframes' },
-          { name: 'Framer Motion', category: 'Motion Design', desc: 'Spring physics, layout transitions, micro-interactions' },
-          { name: 'Vercel & Git', category: 'Deployment & CI/CD', desc: 'Version control, preview deployments, performance monitoring' },
+          { name: 'React & Next.js 15', category: 'Frontend Frameworks', desc: 'App Router, Server Components, and responsive rendering' },
+          { name: 'TypeScript', category: 'Language', desc: 'Type safety and clean component prop definitions' },
+          { name: 'Tailwind CSS', category: 'Styling', desc: 'Responsive layouts and utility-first styling' },
+          { name: 'Figma', category: 'Design & Prototyping', desc: 'Wireframes, UI layouts, and interactive prototypes' },
+          { name: 'Framer Motion', category: 'Motion Design', desc: 'Subtle UI animations and smooth page transitions' },
+          { name: 'Vercel & Git', category: 'Deployment & Versioning', desc: 'Version control with Git and hosting on Vercel' },
         ].map((tech, idx) => {
           // Columns in 3-col layout: 0 (left -25px), 1 (center 0px), 2 (right +25px)
           const colIndex = idx % 3;

@@ -128,12 +128,12 @@ export function Navbar() {
               onClick={() => setCommandPaletteOpen(true)}
               className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/[0.04] dark:bg-white/[0.08] hover:bg-black/[0.08] dark:hover:bg-white/[0.14] text-[#1d1d1f] dark:text-white transition-all text-xs font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3]"
               aria-label="Open search command palette"
-              title="Search commands (⌘K)"
+              title="Search commands (⌘K / Ctrl+K)"
             >
               <Search className="w-3.5 h-3.5 text-[#0071e3]" />
               <span className="hidden lg:inline text-[11px] text-[#86868b] dark:text-[#a1a1a6]">Search</span>
               <kbd className="hidden sm:inline-block px-1.5 py-0.2 text-[9px] font-mono font-semibold rounded bg-black/10 dark:bg-white/10 text-[#86868b] dark:text-[#a1a1a6]">
-                ⌘K
+                ⌘K / Ctrl K
               </kbd>
             </button>
 

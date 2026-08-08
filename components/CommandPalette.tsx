@@ -133,7 +133,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
           {/* Footer Shortcuts */}
           <div className="px-5 py-3 bg-black/[0.02] dark:bg-white/[0.02] border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[11px] text-[#86868b]">
             <span>Press <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">ESC</kbd> to exit</span>
-            <span>Use <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">⌘K</kbd> anytime</span>
+            <span>Use <kbd className="px-1.5 py-0.5 rounded bg-black/10 dark:bg-white/10 font-mono text-[10px]">⌘K / Ctrl+K</kbd> anytime</span>
           </div>
         </motion.div>
       </div>

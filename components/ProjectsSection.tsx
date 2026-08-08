@@ -39,15 +39,15 @@ const PROJECTS: Project[] = [
     urlDisplay: 'passfourge.vercel.app',
     status: 'LIVE',
     summary:
-      'PassForge is a modern, privacy-first password generator designed to help users create strong, unique, and secure passwords instantly.',
+      'PassForge is a privacy-first password generator designed to help users create strong, unique passwords instantly.',
     purpose:
-      'Eliminates the risks of weak or reused passwords by providing 100% client-side local password generation with real-time strength scoring and estimated crack time calculations.',
+      'Generates passwords entirely in your browser without sending any data to a server, featuring real-time strength scoring and customizable character options.',
     keyFeatures: [
-      'Client-side local password generation (100% private)',
-      'Real-time strength evaluation & estimated crack time',
-      'Customizable length & character sets (symbols, numbers, cases)',
-      'One-click copy with instant micro-interaction feedback',
-      'Apple, Linear, and Notion inspired minimal interface',
+      '100% client-side password generation',
+      'Real-time strength evaluation & crack time estimates',
+      'Customizable length & character sets',
+      'One-click copy with instant feedback',
+      'Minimalist interface inspired by clean desktop software',
     ],
     techStack: [
       'Next.js',
@@ -68,15 +68,15 @@ const PROJECTS: Project[] = [
     urlDisplay: 'keyboard-learner-by-musthafa.vercel.app',
     status: 'LIVE',
     summary:
-      'TypeFlow is an interactive typing practice web application created for beginners, school students, and first-time computer users.',
+      'TypeFlow is an interactive typing practice app built to help beginners and students learn keyboard layouts.',
     purpose:
-      'Provides a clean, distraction-free environment to learn keyboard layouts, build muscle memory, and improve typing speed and accuracy through guided practice sessions.',
+      'Offers a clean, distraction-free layout with guided practice lessons, real-time speed tracking, accuracy metrics, and visual key highlights.',
     keyFeatures: [
-      'Interactive typing practice lessons & guided modules',
+      'Interactive typing practice modules',
       'Real-time WPM speed & accuracy tracking',
-      'Physical keyboard key visual feedback',
-      'Clean, distraction-free learning environment',
-      'Accessible, mobile and desktop responsive layout',
+      'Visual key highlight feedback on screen',
+      'Distraction-free learning layout',
+      'Responsive design for desktop and mobile',
     ],
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
   },
@@ -90,14 +90,14 @@ const PROJECTS: Project[] = [
     urlDisplay: 'nexus-ai-ruby-eight.vercel.app',
     status: 'LIVE',
     summary:
-      'Nexus is a modern productivity workspace built to deliver fast, intelligent, and natural interactions through a clean Apple-inspired user experience.',
+      'Nexus Workspace is a clean web application designed for organized writing, notes, and daily task management.',
     purpose:
-      'Combines a monochrome design system with real-time response streaming to help users streamline writing, coding, research, and daily task organization.',
+      'Features a dark and light theme toggle, real-time response streaming, code block syntax highlighting, and persistent conversation history.',
     keyFeatures: [
-      'Real-time response streaming interface',
-      'Secure authentication flow with Supabase Auth',
-      'Markdown and syntax-highlighted code block rendering',
-      'Conversation history management & session search',
+      'Real-time response streaming UI',
+      'Authentication flow with Supabase Auth',
+      'Markdown rendering & syntax-highlighted code blocks',
+      'Conversation history & session search',
       'Dark and Light theme toggle',
     ],
     techStack: [
@@ -120,15 +120,15 @@ const PROJECTS: Project[] = [
     urlDisplay: 'habit-tracker-khaki-five-20.vercel.app',
     status: 'LIVE',
     summary:
-      'HabitOS is a premium personal habit tracking web application designed to help users build consistent daily routines.',
+      'HabitOS is a personal habit tracker created to help users establish and keep daily routines.',
     purpose:
-      'Provides a personalized onboarding flow, daily streak tracking, calendar visualizers, and habit analytics inspired by modern SaaS products like Linear and Notion.',
+      'Includes custom habit creation, daily streak tracking, completion calendars, and local browser storage without requiring an account.',
     keyFeatures: [
-      'Custom habit creation & personalized profile onboarding',
-      'Daily habit completion streaks & progress analytics',
-      'Calendar visualization dashboard & milestone achievements',
-      'Local Storage data persistence with zero account setup needed',
-      'Light and Dark mode interface',
+      'Custom habit setup & profile onboarding',
+      'Daily streak counters & progress tracking',
+      'Calendar view for completion history',
+      'Local storage persistence with zero account setup needed',
+      'Light and Dark mode support',
     ],
     techStack: [
       'Next.js 15',
@@ -150,14 +150,14 @@ const PROJECTS: Project[] = [
     urlDisplay: 'kozhikoden-ruchi.vercel.app',
     status: 'LIVE',
     summary:
-      'A modern food discovery platform created to help food lovers and travelers explore the rich culinary culture of Kozhikode.',
+      'A local food discovery guide created to help visitors and locals explore popular food spots and traditional dishes in Kozhikode.',
     purpose:
-      'Simplifies destination discovery by showcasing popular restaurants, cafés, street food spots, and authentic Malabar cuisine through a mobile-first, intuitive UI.',
+      'Organizes local restaurants, cafés, street food spots, and authentic Malabar cuisine into a mobile-friendly, easy-to-navigate interface.',
     keyFeatures: [
-      'Categorized food & restaurant discovery grid',
-      'Mobile-first responsive interface designed for travelers on the go',
-      'Clean navigation & location details',
-      'Fast image & content loading performance',
+      'Categorized restaurant & food discovery grid',
+      'Mobile-first layout designed for quick browsing',
+      'Clear location & navigation details',
+      'Fast image loading performance',
     ],
     techStack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
   },
@@ -171,14 +171,14 @@ const PROJECTS: Project[] = [
     urlDisplay: 'muhammad-musthafa-web-dev-portfolio.vercel.app',
     status: 'LIVE',
     summary:
-      'An Apple-inspired digital portfolio showcasing selected design and development projects with precision, performance, and accessibility.',
+      'My personal portfolio website built to present my UI design and web development work.',
     purpose:
-      'Presents personal work, design approach, and frontend capabilities through a clean visual hierarchy, subtle Framer Motion transitions, and a responsive glass design system.',
+      'Presents project details, skill summaries, and contact options with a clean layout, subtle Framer Motion transitions, and dark mode support.',
     keyFeatures: [
-      'Apple-inspired minimalist layout & glassmorphic design system',
-      'Smooth Framer Motion scroll animations and active tab indicators',
+      'Clean layout & glass design system',
+      'Smooth scroll transitions and active navigation indicators',
       'Fully responsive, WCAG AA accessible layout',
-      'Direct Google Forms contact integration',
+      'Direct contact form integration',
     ],
     techStack: [
       'Next.js 15',
@@ -218,7 +218,7 @@ export function ProjectsSection() {
           Selected Work
         </h2>
         <p className="text-base text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal">
-          Real web applications and design systems built with focus on user experience, performance, and modern engineering.
+          Web applications and user interfaces built with a focus on simplicity, responsiveness, and user experience.
         </p>
       </div>
 

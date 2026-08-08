@@ -1,5 +1,4 @@
 import React from 'react';
-import { WatercolorMesh } from '@/components/WatercolorMesh';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import dynamic from 'next/dynamic';
@@ -25,10 +24,7 @@ export default function Home() {
         id="main-content"
         className="relative min-h-screen bg-white dark:bg-black text-[#1d1d1f] dark:text-[#f5f5f7] overflow-hidden selection:bg-[#0071e3]/10 selection:text-[#0071e3] transition-colors duration-300"
       >
-        {/* Animated WWDC Watercolor Background Mesh */}
-        <WatercolorMesh />
-
-      {/* Floating Glass Navigation Bar */}
+        {/* Floating Glass Navigation Bar */}
       <Navbar />
 
       {/* Hero Section */}
