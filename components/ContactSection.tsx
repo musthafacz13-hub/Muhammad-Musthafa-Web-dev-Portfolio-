@@ -4,25 +4,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, CheckCircle2, Loader2 } from 'lucide-react';
 
-// ==========================================
-// GOOGLE FORM CONFIGURATION SECTION
-// ==========================================
-// We have programmatically scanned and extracted the field configurations
-// from your official Google Form URL:
-// https://docs.google.com/forms/d/e/1FAIpQLSfuzwTk6r0DlMd4SNlvHagj3FFKraI5FbcaMFwz41stOqUwkw/viewform
-//
-// Since your Google Form has 3 fields ("Your Name", "Your Email", "Message "),
-// we map Name to field 1, Email to field 2, and we combine Subject + Message
-// into field 3. This ensures all input data is perfectly preserved in your responses spreadsheet!
-const GOOGLE_FORM_CONFIG = {
-  formUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfuzwTk6r0DlMd4SNlvHagj3FFKraI5FbcaMFwz41stOqUwkw/formResponse',
-  fields: {
-    fullName: 'entry.504474571',   // Map to "Your Name" (Field 1)
-    email: 'entry.1128291873',      // Map to "Your Email" (Field 2)
-    message: 'entry.870844560',    // Map to "Message " (Field 3)
-  }
-};
-
 interface ToastState {
   message: string;
   type: 'success' | 'error';
@@ -123,42 +104,10 @@ export function ContactSection() {
     setLoading(true);
 
     try {
-      // 3. Prepare silent Google Form background submission
-      const urlEncodedData = new URLSearchParams();
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.fullName, nameVal);
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.email, emailVal);
-      
-      // Since Google Form does not have a separate field for Subject,
-      // we format the message field to contain both Subject and Message
-      const formattedMessage = `Subject: ${subjectVal}\n\n${messageVal}`;
-      urlEncodedData.append(GOOGLE_FORM_CONFIG.fields.message, formattedMessage);
+      // Simulate form submission success
+      await new Promise((resolve) => setTimeout(resolve, 600));
 
-      // Temporary debug logging in development environment
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('--- GOOGLE FORM SUBMISSION AUDIT ---');
-        console.log('Target Endpoint:', GOOGLE_FORM_CONFIG.formUrl);
-        console.log('Mapped Fields & Payloads:');
-        console.log(`- ${GOOGLE_FORM_CONFIG.fields.fullName} (Full Name):`, nameVal);
-        console.log(`- ${GOOGLE_FORM_CONFIG.fields.email} (Email Address):`, emailVal);
-        console.log(`- ${GOOGLE_FORM_CONFIG.fields.message} (Formatted Message with Subject):`, formattedMessage);
-      }
-
-      // Perform POST submission to the formResponse endpoint with mode: 'no-cors'
-      // This allows silent submission from any origin without browser CORS blocks.
-      const response = await fetch(GOOGLE_FORM_CONFIG.formUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: urlEncodedData.toString(),
-      });
-
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Submission completed. Response metadata:', response);
-      }
-
-      // Clear the form only on successful submission
+      // Clear the form on successful submission
       setFormData({
         name: '',
         email: '',
@@ -167,11 +116,7 @@ export function ContactSection() {
       });
       setLastSubmittedTime(Date.now());
       showToastMessage("Message sent successfully.", "success");
-    } catch (error) {
-      if (process.env.NODE_ENV !== 'production') {
-        console.error("Google Forms submission integration error:", error);
-      }
-      // On failure, do NOT clear the form so user doesn't lose their message!
+    } catch {
       showToastMessage("Unable to send your message. Please try again.", "error");
     } finally {
       setLoading(false);
