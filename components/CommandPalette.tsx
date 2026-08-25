@@ -15,6 +15,7 @@ const COMMAND_ITEMS = [
   { id: 'projects', title: 'Selected Work & Projects', category: 'Section', icon: FolderGit2, href: '#projects' },
   { id: 'contact', title: 'Get in Touch / Contact', category: 'Section', icon: Mail, href: '#contact' },
   { id: 'cv', title: 'View CV (Google Drive)', category: 'Document', icon: FileText, href: 'https://drive.google.com/file/d/1ZCW3ssIUgUjSzqHkXIxz7MolMw2_xY5e/view?usp=drivesdk', external: true },
+  { id: 'belen', title: 'Belen Study AI - AI PDF Study Assistant', category: 'Project', icon: FolderGit2, href: 'https://belen-study-ai.vercel.app/', external: true },
   { id: 'passforge', title: 'PassForge - Password Security App', category: 'Project', icon: FolderGit2, href: 'https://passfourge.vercel.app/', external: true },
   { id: 'typeflow', title: 'TypeFlow - Typing Practice App', category: 'Project', icon: FolderGit2, href: 'https://keyboard-learner-by-musthafa.vercel.app/', external: true },
   { id: 'nexus', title: 'Nexus Workspace - Productivity App', category: 'Project', icon: FolderGit2, href: 'https://nexus-ai-ruby-eight.vercel.app/', external: true },

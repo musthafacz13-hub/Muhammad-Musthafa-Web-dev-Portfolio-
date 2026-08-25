@@ -30,6 +30,35 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    id: 'belen-study-ai',
+    name: 'Belen Study AI',
+    category: 'AI Study Assistant & EdTech',
+    categoryTag: 'AI & EdTech',
+    role: 'Product Designer & Full-Stack Developer',
+    liveUrl: 'https://belen-study-ai.vercel.app/',
+    urlDisplay: 'belen-study-ai.vercel.app',
+    status: 'LIVE',
+    summary:
+      'Belen Study AI is an AI-powered learning assistant designed to help students understand large and difficult study materials faster.',
+    purpose:
+      'Transforms static academic PDFs into structured summaries and interactive AI teacher conversations, reducing study time and information overload.',
+    keyFeatures: [
+      'AI PDF Summarization — Converts lengthy study PDFs into concise, structured notes',
+      'AI Teacher — Interactive Q&A conversation grounded in uploaded study material',
+      'PDF-Centered Workflow — Keeps the entire learning flow anchored to your document',
+      'Student-Focused UX — Clean interface built to minimize cognitive load',
+      'Responsive Design — Smooth experience across mobile and desktop devices',
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Gemini AI',
+      'Tailwind CSS',
+      'Vercel',
+    ],
+  },
+  {
     id: 'passforge',
     name: 'PassForge',
     category: 'Security & Utility Web App',
@@ -191,7 +220,7 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const CATEGORIES = ['All', 'Security & Utility', 'Education', 'Productivity & SaaS', 'Food & Culture', 'Portfolio'];
+const CATEGORIES = ['All', 'AI & EdTech', 'Security & Utility', 'Education', 'Productivity & SaaS', 'Food & Culture', 'Portfolio'];
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
