@@ -36,9 +36,20 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 text-xl sm:text-2xl md:text-3xl text-[#424245] dark:text-[#e5e5ea] font-medium tracking-tight max-w-xl"
+          className="mt-4 text-lg sm:text-2xl md:text-3xl text-[#424245] dark:text-[#e5e5ea] font-medium tracking-tight max-w-2xl"
         >
-          UI/UX Designer &amp; Web Developer
+          <span>CEO at </span>
+          <a
+            href="https://belen-software-studio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#0071e3] hover:underline font-semibold"
+          >
+            Belen Software Company
+          </a>
+          <span className="block sm:inline sm:before:content-['•'] sm:before:mx-2 text-[#6e6e73] dark:text-[#a1a1a6] text-base sm:text-2xl font-normal">
+            UI/UX Designer &amp; Web Developer
+          </span>
         </motion.p>
 
         {/* Short Mission Description */}
@@ -46,9 +57,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-6 text-base sm:text-lg text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal leading-relaxed"
+          className="mt-5 text-base sm:text-lg text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal leading-relaxed"
         >
-          I build responsive web applications and design clean, easy-to-use digital interfaces with React, Next.js, and Figma.
+          Leading Belen Software Studio, building responsive web applications, and designing clean digital products with React, Next.js, and Figma.
         </motion.p>
 
         {/* Action CTAs */}

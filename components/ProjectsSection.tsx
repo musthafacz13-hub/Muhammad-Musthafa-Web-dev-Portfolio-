@@ -30,6 +30,35 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
+    id: 'belen-software-studio',
+    name: 'Belen Software Studio',
+    category: 'Software Agency & Company Portfolio',
+    categoryTag: 'Company & Studio',
+    role: 'CEO & Founder',
+    liveUrl: 'https://belen-software-studio.vercel.app/',
+    urlDisplay: 'belen-software-studio.vercel.app',
+    status: 'LIVE',
+    summary:
+      'Official company portfolio for Belen Software Company, presenting our software engineering solutions, client web development, and digital product ecosystem.',
+    purpose:
+      'Acts as our primary company portfolio and digital studio hub, highlighting client services, technical capabilities, completed software products, and partnership inquiries.',
+    keyFeatures: [
+      'Official Belen Software Company digital portfolio',
+      'Services overview covering full-stack web and SaaS development',
+      'Featured digital products & client solution showcases',
+      'Direct consultation booking & project inquiry workflow',
+      'Fast, responsive modern design optimized for all viewports',
+    ],
+    techStack: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'Framer Motion',
+      'Vercel',
+    ],
+  },
+  {
     id: 'belen-study-ai',
     name: 'Belen Study AI',
     category: 'AI Study Assistant & EdTech',
@@ -220,7 +249,7 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const CATEGORIES = ['All', 'AI & EdTech', 'Security & Utility', 'Education', 'Productivity & SaaS', 'Food & Culture', 'Portfolio'];
+const CATEGORIES = ['All', 'Company & Studio', 'AI & EdTech', 'Security & Utility', 'Education', 'Productivity & SaaS', 'Food & Culture', 'Portfolio'];
 
 export function ProjectsSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
