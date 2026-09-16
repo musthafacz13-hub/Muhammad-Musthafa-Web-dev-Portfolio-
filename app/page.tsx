@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 // Below-the-fold components split dynamically to reduce initial JavaScript payload
 const AboutSection = dynamic(() => import('@/components/AboutSection').then((mod) => mod.AboutSection));
 const SkillsSection = dynamic(() => import('@/components/SkillsSection').then((mod) => mod.SkillsSection));
-const ProjectsSection = dynamic(() => import('@/components/ProjectsSection').then((mod) => mod.ProjectsSection));
 const ContactSection = dynamic(() => import('@/components/ContactSection').then((mod) => mod.ContactSection));
 const SocialSection = dynamic(() => import('@/components/SocialSection').then((mod) => mod.SocialSection));
 const FooterSection = dynamic(() => import('@/components/FooterSection').then((mod) => mod.FooterSection));
@@ -35,9 +34,6 @@ export default function Home() {
 
       {/* Services & Skills Section */}
       <SkillsSection />
-
-      {/* Projects Section */}
-      <ProjectsSection />
 
       {/* Contact Section */}
       <ContactSection />

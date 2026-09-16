@@ -10,17 +10,10 @@ interface CommandPaletteProps {
 }
 
 const COMMAND_ITEMS = [
-  { id: 'about', title: 'About Muhammed Musthafa (CEO)', category: 'Section', icon: User, href: '#about' },
+  { id: 'about', title: 'About Muhammed Musthafa', category: 'Section', icon: User, href: '#about' },
   { id: 'skills', title: 'Services & Tech Stack', category: 'Section', icon: Wrench, href: '#skills' },
-  { id: 'projects', title: 'Selected Work & Projects', category: 'Section', icon: FolderGit2, href: '#projects' },
   { id: 'contact', title: 'Get in Touch / Contact', category: 'Section', icon: Mail, href: '#contact' },
-  { id: 'belen-software-studio', title: 'Belen Software Studio - Company Portfolio (CEO)', category: 'Company', icon: ExternalLink, href: 'https://belen-software-studio.vercel.app/', external: true },
   { id: 'cv', title: 'View CV (Google Drive)', category: 'Document', icon: FileText, href: 'https://drive.google.com/file/d/1ZCW3ssIUgUjSzqHkXIxz7MolMw2_xY5e/view?usp=drivesdk', external: true },
-  { id: 'belen-study-ai', title: 'Belen Study AI - AI PDF Study Assistant', category: 'Project', icon: FolderGit2, href: 'https://belen-study-ai.vercel.app/', external: true },
-  { id: 'passforge', title: 'PassForge - Password Security App', category: 'Project', icon: FolderGit2, href: 'https://passfourge.vercel.app/', external: true },
-  { id: 'typeflow', title: 'TypeFlow - Typing Practice App', category: 'Project', icon: FolderGit2, href: 'https://keyboard-learner-by-musthafa.vercel.app/', external: true },
-  { id: 'nexus', title: 'Nexus Workspace - Productivity App', category: 'Project', icon: FolderGit2, href: 'https://nexus-ai-ruby-eight.vercel.app/', external: true },
-  { id: 'habitos', title: 'HabitOS - Habit Tracker SaaS', category: 'Project', icon: FolderGit2, href: 'https://habit-tracker-khaki-five-20.vercel.app/', external: true },
   { id: 'github', title: 'GitHub Profile (@musthafacz13-hub)', category: 'Social', icon: Github, href: 'https://github.com/musthafacz13-hub', external: true },
 ];
 
@@ -75,7 +68,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             <input
               type="text"
               autoFocus
-              placeholder="Type a command, project, or section..."
+              placeholder="Type a command or section..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               suppressHydrationWarning

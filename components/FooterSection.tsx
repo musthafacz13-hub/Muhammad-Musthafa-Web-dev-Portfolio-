@@ -14,15 +14,6 @@ export function FooterSection() {
         <div className="flex flex-wrap items-center gap-2 text-center sm:text-left">
           <span>© 2026 Muhammed Musthafa</span>
           <span>•</span>
-          <a
-            href="https://belen-software-studio.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#0071e3] transition-colors font-medium text-[#1d1d1f] dark:text-white"
-          >
-            CEO, Belen Software Company
-          </a>
-          <span>•</span>
           <span className="flex items-center gap-1 text-[#1d1d1f] dark:text-white">
             <MapPin className="w-3 h-3 text-[#0071e3]" />
             Kozhikode, Kerala, India

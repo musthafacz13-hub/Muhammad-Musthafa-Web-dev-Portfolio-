@@ -46,20 +46,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-4 text-lg sm:text-2xl md:text-3xl text-[#424245] dark:text-[#e5e5ea] font-medium tracking-tight max-w-2xl"
+          className="mt-4 text-xl sm:text-2xl md:text-3xl text-[#424245] dark:text-[#e5e5ea] font-medium tracking-tight max-w-xl"
         >
-          <span>CEO at </span>
-          <a
-            href="https://belen-software-studio.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#0071e3] hover:underline font-semibold"
-          >
-            Belen Software Company
-          </a>
-          <span className="block sm:inline sm:before:content-['•'] sm:before:mx-2 text-[#6e6e73] dark:text-[#a1a1a6] text-base sm:text-2xl font-normal">
-            UI/UX Designer &amp; Web Developer
-          </span>
+          UI/UX Designer &amp; Web Developer
         </motion.p>
 
         {/* Short Mission Description */}
@@ -67,9 +56,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-5 text-base sm:text-lg text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal leading-relaxed"
+          className="mt-6 text-base sm:text-lg text-[#515154] dark:text-[#d1d1d6] max-w-xl font-normal leading-relaxed"
         >
-          Leading Belen Software Studio, building responsive web applications, and designing clean digital products with React, Next.js, and Figma.
+          I build responsive web applications and design clean, easy-to-use digital interfaces with React, Next.js, and Figma.
         </motion.p>
 
         {/* Action CTAs */}
@@ -80,19 +69,13 @@ export function HeroSection() {
           className="mt-8 flex flex-col sm:flex-row gap-2.5 sm:gap-3.5 justify-center items-center w-full sm:w-auto"
         >
           <a
-            href="#projects"
-            className="w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 rounded-full bg-[#0071e3] text-white font-semibold text-sm sm:text-base hover:bg-[#0077ed] active:scale-[0.98] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2 text-center"
-          >
-            Explore Projects
-          </a>
-          <a
             href="https://drive.google.com/file/d/1ZCW3ssIUgUjSzqHkXIxz7MolMw2_xY5e/view?usp=drivesdk"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 rounded-full bg-[#f5f5f7] dark:bg-[#2c2c2e] text-[#1d1d1f] dark:text-white border border-black/5 dark:border-white/10 font-semibold text-sm sm:text-base hover:bg-[#e8e8ed] dark:hover:bg-[#3a3a3c] active:scale-[0.98] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2 inline-flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-6 py-3 sm:px-7 sm:py-3.5 rounded-full bg-[#0071e3] text-white font-semibold text-sm sm:text-base hover:bg-[#0077ed] active:scale-[0.98] transition-all duration-200 shadow-md hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0071e3] focus-visible:ring-offset-2 inline-flex items-center justify-center gap-2"
             aria-label="View Muhammed Musthafa's CV in Google Drive (opens in a new tab)"
           >
-            <FileText className="w-4 h-4 text-[#0071e3]" />
+            <FileText className="w-4 h-4 text-white" />
             <span>View CV</span>
           </a>
           <a

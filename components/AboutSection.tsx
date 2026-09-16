@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Code, Palette, Building2, ExternalLink } from 'lucide-react';
+import { MapPin, Code, Palette } from 'lucide-react';
 
 export function AboutSection() {
   return (
@@ -29,42 +29,19 @@ export function AboutSection() {
         >
           <div className="space-y-4 text-base sm:text-lg text-[#1d1d1f]/90 dark:text-white/90 leading-relaxed font-normal">
             <p>
-              Hi, I&apos;m <strong className="font-semibold text-[#1d1d1f] dark:text-white">Muhammed Musthafa</strong>, CEO at{' '}
-              <a
-                href="https://belen-software-studio.vercel.app/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#0071e3] hover:underline font-semibold inline-flex items-center gap-1"
-              >
-                Belen Software Company
-                <ExternalLink className="w-3.5 h-3.5 inline" />
-              </a>
-              , and a UI/UX designer and web developer based in Kozhikode, Kerala, India.
+              Hi, I&apos;m <strong className="font-semibold text-[#1d1d1f] dark:text-white">Muhammed Musthafa</strong>, a UI/UX designer and web developer based in Kozhikode, Kerala, India.
             </p>
             <p className="text-[#424245] dark:text-[#e5e5ea] text-base leading-relaxed">
-              At Belen Software Studio, we craft digital products, modern web solutions, and intuitive user experiences that help businesses and students succeed.
+              I design clean web and mobile user interfaces in Figma, and build responsive frontend applications using React, Next.js, and Tailwind CSS.
             </p>
             <p className="text-[#515154] dark:text-[#d1d1d6] text-base leading-relaxed">
               I focus on clear visual hierarchy, accessible interactions, and clean code structures with React, Next.js, TypeScript, and Figma.
             </p>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-black/5 dark:border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs font-medium text-[#86868b] dark:text-[#a1a1a6]">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#0071e3] shrink-0" />
-              <span>Kozhikode, Kerala, India</span>
-            </div>
-
-            <a
-              href="https://belen-software-studio.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-[#0071e3] hover:underline font-medium"
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Visit Belen Software Studio</span>
-              <ExternalLink className="w-3 h-3" />
-            </a>
+          <div className="mt-8 pt-6 border-t border-black/5 dark:border-white/10 flex items-center gap-2 text-xs font-medium text-[#86868b] dark:text-[#a1a1a6]">
+            <MapPin className="w-4 h-4 text-[#0071e3] shrink-0" />
+            <span>Kozhikode, Kerala, India</span>
           </div>
         </motion.div>
 
@@ -76,31 +53,23 @@ export function AboutSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="md:col-span-4 flex flex-col gap-4 justify-between"
         >
-          <a
-            href="https://belen-software-studio.vercel.app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glass-card p-6 rounded-3xl border border-black/5 dark:border-white/10 flex-1 flex flex-col justify-center group hover:border-[#0071e3]/40 transition-colors"
-          >
-            <div className="w-10 h-10 rounded-2xl bg-[#0071e3]/10 text-[#0071e3] flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-              <Building2 className="w-5 h-5" />
-            </div>
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white tracking-tight">Belen Software Studio</h3>
-              <ExternalLink className="w-3.5 h-3.5 text-[#86868b] group-hover:text-[#0071e3] transition-colors" />
-            </div>
-            <p className="text-xs text-[#515154] dark:text-[#d1d1d6] mt-1.5 leading-relaxed">
-              CEO &amp; Founder. Our company portfolio presenting studio services and digital software solutions.
-            </p>
-          </a>
-
           <div className="glass-card p-6 rounded-3xl border border-black/5 dark:border-white/10 flex-1 flex flex-col justify-center">
             <div className="w-10 h-10 rounded-2xl bg-[#0071e3]/10 text-[#0071e3] flex items-center justify-center mb-3">
               <Palette className="w-5 h-5" />
             </div>
-            <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white tracking-tight">Design &amp; Frontend</h3>
+            <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white tracking-tight">Design Focus</h3>
             <p className="text-xs text-[#515154] dark:text-[#d1d1d6] mt-1.5 leading-relaxed">
-              Figma UI/UX design, wireframing, TypeScript, React, Next.js, and Tailwind CSS.
+              Figma wireframing, component design systems, layout structure, and interactive prototypes.
+            </p>
+          </div>
+
+          <div className="glass-card p-6 rounded-3xl border border-black/5 dark:border-white/10 flex-1 flex flex-col justify-center">
+            <div className="w-10 h-10 rounded-2xl bg-[#1d1d1f]/10 dark:bg-white/10 text-[#1d1d1f] dark:text-white flex items-center justify-center mb-3">
+              <Code className="w-5 h-5" />
+            </div>
+            <h3 className="text-sm font-semibold text-[#1d1d1f] dark:text-white tracking-tight">Frontend Focus</h3>
+            <p className="text-xs text-[#515154] dark:text-[#d1d1d6] mt-1.5 leading-relaxed">
+              Semantic HTML, modern CSS, TypeScript, React, Next.js, and Tailwind CSS.
             </p>
           </div>
         </motion.div>
