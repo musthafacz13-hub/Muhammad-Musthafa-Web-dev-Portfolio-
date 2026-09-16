@@ -3,12 +3,22 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { FileText } from 'lucide-react';
+import { ProfileCard } from '@/components/ProfileCard';
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[85vh] sm:min-h-screen flex flex-col justify-center items-center pt-28 sm:pt-32 pb-12 px-5 sm:px-12 overflow-hidden">
       {/* Main Content Container */}
       <div className="max-w-3xl text-center relative z-10 flex flex-col items-center">
+        {/* Profile ID Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.92, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <ProfileCard />
+        </motion.div>
+
         {/* Status Pill Badge */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}

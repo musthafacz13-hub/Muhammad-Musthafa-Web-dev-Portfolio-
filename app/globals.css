@@ -117,6 +117,50 @@ html.dark .glass-card-subtle {
   scrollbar-width: none;
 }
 
+/* Profile ID Card Wobble/Shake Animation */
+@keyframes profileCardWobble {
+  0% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
+.profile-id-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 12px;
+  padding: 6px;
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.1), 0 2px 6px -1px rgba(0, 0, 0, 0.05);
+  transform-origin: 50% 15%;
+  animation: profileCardWobble 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+#profile-id-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-id-card {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
